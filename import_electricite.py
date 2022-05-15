@@ -46,4 +46,17 @@ for i in range(len(nom_variables)):
     for j in range(len(donnees)):
         dataframe[i].append(donnees[j][i])
 
-print(dataframe[0][0:10])
+# print(dataframe[0][0:10])
+
+# Summary
+# resume=[]
+# n=len(dataframe)
+# for i in range(n):
+#     resume.append([])
+# for i in range(n):
+#     resume[i].append(dataframe[i][0])
+#     resume[i].append(type(dataframe[i][1]))
+# print(resume)
+
+
+print(float('hugues'))

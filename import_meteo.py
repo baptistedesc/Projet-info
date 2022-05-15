@@ -9,5 +9,7 @@ with gzip.open(folder + filename, mode='rt') as gzfile :
     synopreader = csv.reader(gzfile, delimiter=';')
     for row in synopreader :
         data.append(row)
+for i in range(len(data)):
+    del data[i][-1]
 
-print(data[0])
+print(data[1])
