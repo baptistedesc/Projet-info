@@ -34,8 +34,8 @@ for i in range(n):
 # print(nom_variables)
 
 donnees.insert(0,nom_variables)
-# print(donnees[0])
-# print(donnees[1])
+print(donnees[0])
+print(donnees[4])
 # print(base_donnees)
 
 
