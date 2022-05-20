@@ -1,12 +1,20 @@
+#Fonctions pour pouvoir sélectionner une variable avec son nom (comme avec un dictionnaire) 
+# plutôt qu'avec son indice, je sais pas encore dans quelle classe mettre ça
+
 from transformation import Transformation
-import numpy as np
 
 class Selection(Transformation):
-    def __init__(self, dataframe) -> None:
-        self.dataframe = dataframe
-  
+#On créé la liste des variables
+    def __init__(self,dataframe):
+        self.dataframe=dataframe
 
-    def execute(self,colonne):
-        dataframe2 = np.array(self.dataframe)
-        indice = (np.where(colonne==dataframe2)[0][0])
-        return dataframe2[indice]
+    def execute(self,variable):
+        nom_variables=[]
+        for i in range(len(self.dataframe)):
+            nom_variables.append(self.dataframe[i][0])
+        assert variable in nom_variables
+        for i in range(len(self.dataframe))
+            if self.dataframe[i][0]==variable:
+                return self.dataframe[i]
+
+        
