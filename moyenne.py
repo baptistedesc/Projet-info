@@ -1,7 +1,5 @@
 from estimateur import Estimateur
 
-
-
 class Moyenne(Estimateur):
     def __init__(self,variable) -> None:
         self.variable=variable

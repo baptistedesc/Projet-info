@@ -6,13 +6,8 @@ class Reduction(Transformation):
     def __init__(self, dataframe) -> None:
         self.dataframe = dataframe
 
-  
 
     def execute(self, colonne) :
-
-
-
-
         for i in range(len(self.dataframe)) :
             if str(self.dataframe[i][0])==str(colonne) :
                 moyenne = 0
