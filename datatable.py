@@ -36,13 +36,13 @@ class Datatable:
 # Pour tester la fonction chargement (je sais pas comment faire avec le __main__)
 # folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
 # filename = 'synop.201301.csv.gz'
-folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
-filename = '2022-03.json.gz'
+# folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+# filename = '2022-03.json.gz'
 
-Frac=[['a',2,3],['b',5,6]]
+# Frac=[['a',2,3],['b',5,6]]
 # print(datatable.chargement(Frac,filename,folder))
 # print(datatable.resume(Frac))
 
 
-datatable.exporter(Frac)
+# datatable.exporter(Frac)
 

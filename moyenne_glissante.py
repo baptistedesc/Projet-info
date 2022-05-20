@@ -34,7 +34,7 @@ class Moyenne_Glissante (Transformation) :
         data=Selection.execute(variable)
         moyenne_glissante=[]
         for i in range(len(data)-taille_intervalle):
-            for j in range(i,i+taille_intervalle)
+            for j in range(i,i+taille_intervalle):
                 moyenne_glissante[i]=(moyenne_glissante[i]+data[i+j])/taille_intervalle
         self.dataframe.append(moyenne_glissante)
         return self.dataframe

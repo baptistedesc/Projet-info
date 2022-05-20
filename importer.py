@@ -3,9 +3,9 @@ import gzip
 import csv
 import json
 
-from datatable import Datatable
+import datatable
 
-def isfloat(value):
+def isfloat(valeur):
     """Renvoie True si value est un flottant, False sinon
     Parameters
     ----------
@@ -24,13 +24,13 @@ def isfloat(value):
     False
     """
     try:
-        float(value)
+        float(valeur)
         return True
     except ValueError:
         return False
 
 class Importer:
-    def __init__(self):
+    def __init__(self,filename,folder):
         self.filename=filename
         self.folder=folder
     def lire(self):
@@ -95,7 +95,7 @@ class Importer:
             del dataframe[i][0]
 
 
-        return Datatable(valeurs=dataframe, nom_colonnes=name)
+        return datatable.Datatable(valeurs=dataframe, nom_colonnes=name)
 
 
 
