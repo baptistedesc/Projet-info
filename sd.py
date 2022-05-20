@@ -11,7 +11,6 @@ class Sd(Estimateur):
             La variable
         '''
         self.variable = variable
-        self.valeur = self.execute()
     
     def execute(self):
         '''Calcule l'écart-type
