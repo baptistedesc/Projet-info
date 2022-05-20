@@ -1,10 +1,7 @@
-from cmath import tan
 from estimateur import Estimateur
 import matplotlib.pyplot as plt 
-import numpy as np
 
-
-class Boxplot(Estimateur):
+class Boxplot(Estimateur): 
     def __init__(self,dataframe) -> None:
         self.dataframe = dataframe
     

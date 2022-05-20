@@ -1,4 +1,3 @@
-from webbrowser import Opera
 from operation import Operation
 from estimateur import Estimateur
 from moyenne import Moyenne
