@@ -2,6 +2,13 @@ from estimateur import Estimateur
 
 class Sd(Estimateur):
     def __init__(self,variable) -> None:
+        '''Calcul l'écart-type d'une variable
+
+        Parameters
+        ----------
+        variable : list
+            La variable
+        '''
         self.variable = variable
         self.valeur = self.execute()
     

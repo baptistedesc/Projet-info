@@ -3,6 +3,13 @@ from estimateur import Estimateur
 
 class Variance(Estimateur):
     def __init__(self,variable) -> None:
+        '''Calcule la variance d'une variable
+
+        Parameters
+        ----------
+        variable : list
+            La variable
+        '''
         self.variable = variable
     
     def execute(self):
