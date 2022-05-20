@@ -17,7 +17,18 @@ class Reduction(Transformation):
 
     def execute(self, colonne) :
 
+        '''Réduit la variable demandée 
 
+        Parameters
+        ----------
+        colonne : str
+            Le nom de la variable à réduire
+
+        Returns
+        -------
+        table
+            La base de données initiale, avec la variable en question réduite
+        ''' 
 
 
         for i in range(len(self.dataframe)) :

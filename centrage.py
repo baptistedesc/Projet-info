@@ -2,7 +2,7 @@ from transformation import Transformation
 
 class Centrage (Transformation) :
     def __init__ (self, dataframe) :
-        '''Centre certaines variables d'une base de données 
+        '''Centre une variable
 
         Parameters
         ----------
@@ -13,6 +13,18 @@ class Centrage (Transformation) :
         self.dataframe=dataframe
 
     def execute(self,colonne) :
+        '''Centre la variable demandée 
+
+        Parameters
+        ----------
+        colonne : str
+            Le nom de la variable à centrer
+
+        Returns
+        -------
+        table
+            La base de données initiale, avec la variable en question centrée
+        ''' 
         
         for i in range(len(self.dataframe)) :
             if str(self.dataframe[i][0])==colonne :

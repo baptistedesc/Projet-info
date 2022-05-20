@@ -21,6 +21,13 @@ class Fenetrage(Transformation):
         self.date1=date1
         self.date2=date2
     def execute(self):
+        '''Fenêtre la base de données
+
+        Returns
+        -------
+        table
+            La base de données initiale, mais réduite à la période demandée
+        ''' 
 # Il y a un problème à régler avec les dates
         date=Selection.execute(date)
         for i in range (1,len(date)):

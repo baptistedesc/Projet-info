@@ -3,7 +3,7 @@ from selection import Selection
 
 class Moyenne_Glissante (Transformation) :
     def __init__ (self, dataframe) :
-        '''Calcule la série des moyennes glissantes
+        '''Calcule la série des moyennes glissantes d'une variable
 
         Parameters
         ----------
@@ -12,17 +12,18 @@ class Moyenne_Glissante (Transformation) :
         '''
         self.dataframe=dataframe
 
-    def execute(self,colonne,taille_intervalle):
-        '''Calcule la série des moyennes glissantes
+    def execute(self,variable,taille_intervalle):
+        '''Calcule la série des moyennes glissantes d'une variable
 
     Parameters
     ----------
-    colonne : list
+    variable : le nom de la variable
     taille_intervalle : int
 
     Returns
     -------
     list
+        La série des moyennes glissantes
 
     Examples
     --------
@@ -30,7 +31,7 @@ class Moyenne_Glissante (Transformation) :
     >>> liste.execute(liste,3)
     [3.3333333333333335, 5.0, 7.666666666666666, 10.333333333333332, 13.666666666666664]
     '''
-        data=Selection.execute(colonne)
+        data=Selection.execute(variable)
         moyenne_glissante=[]
         for i in range(len(data)-taille_intervalle):
             for j in range(i,i+taille_intervalle)
