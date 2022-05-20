@@ -1,5 +1,5 @@
-from transformation import Transformation
-from selection import Selection
+from ptd.transformations.transformation import Transformation
+from ptd.transformations.selection import Selection
 
 class Moyenne_Glissante (Transformation) :
     def __init__ (self, dataframe) :

@@ -1,4 +1,4 @@
-from transformation import Transformation
+from ptd.transformations.transformation import Transformation
 
 class Centrage (Transformation) :
     def __init__ (self, dataframe) :
