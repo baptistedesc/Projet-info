@@ -1,6 +1,7 @@
 from estimateur import Estimateur
 
 class Sd(Estimateur):
+#C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)    
     def __init__(self,variable) -> None:
         '''Calcul l'écart-type d'une variable
 
@@ -13,6 +14,12 @@ class Sd(Estimateur):
         self.valeur = self.execute()
     
     def execute(self):
+        '''Calcule l'écart-type
+
+        -------
+        float
+            L'écart-type demandé
+        ''' 
         som=0
         for i in self.variable:
             som+=i

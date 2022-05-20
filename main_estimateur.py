@@ -22,7 +22,7 @@ print(variance1.execute())
 print(sd1.execute())
 
 boxplot1 = Boxplot(data)
-print(boxplot1)
+print(boxplot1.execute(data3))
 
 
 
