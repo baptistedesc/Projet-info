@@ -11,7 +11,6 @@ class Moyenne(Estimateur):
             La variable
         '''
         self.variable=variable
-        self.valeur = self.execute()
 
     def execute(self):
         '''Calcule la moyenne 
