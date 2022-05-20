@@ -3,6 +3,8 @@ import gzip
 import csv
 import json
 
+from datatable import Datatable
+
 def isfloat(value):
     """Renvoie True si value est un flottant, False sinon
     Parameters
@@ -86,8 +88,14 @@ class Importer:
         for i in range(len(dataframe)):
             for j in range(len(dataframe[0])):
                 if isfloat(dataframe[i][j])==True:
-                    dataframe[i][j]=float(dataframe[i][j])        
-        return dataframe
+                    dataframe[i][j]=float(dataframe[i][j])
+        nom_colonnes=[]
+        for i in range(len(dataframe)):
+            nom_colonnes.append(dataframe[i][0])
+            del dataframe[i][0]
+
+
+        return Datatable(valeurs=dataframe, nom_colonnes=name)
 
 
 

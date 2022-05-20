@@ -1,13 +1,14 @@
-from Importer import importer
 from distutils.log import error
 import csv
 
 class Datatable:
         
-    def __init__(self):
+    def __init__(self,valeurs,nom_colonnes):
+        self.values=valeurs
+        self.nom_colonnes=nom_colonnes
 
-    def chargement(self,filename,folder):
-        self.datatable=importer.lire(filename,folder)
+    # def chargement(self,filename,folder):
+    #     self.datatable=importer.lire(filename,folder)
 
     def resume(self):
         resume=[]
