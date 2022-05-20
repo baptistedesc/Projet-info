@@ -3,7 +3,7 @@ import gzip
 import csv
 import json
 
-import datatable
+from datatable import Datatable
 
 def isfloat(valeur):
     """Renvoie True si value est un flottant, False sinon
