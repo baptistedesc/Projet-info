@@ -29,6 +29,15 @@ def isfloat(value):
 
 class dataframe:
     def __init__(self,folder,filename):
+        '''Créée une base de données
+
+        Parameters
+        ----------
+        folder : str
+            Le chemin de la base de données à manipuler
+        filename : str
+            Le nom du fichier à importer
+        '''        
         self.folder=folder
         self.filename=filename
 

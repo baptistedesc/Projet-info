@@ -27,7 +27,7 @@ def isfloat(value):
     except ValueError:
         return False
 
-class importer:
+class Importer:
     def __init__(self):
         self.filename=filename
         self.folder=folder
@@ -74,20 +74,20 @@ class importer:
             #Insertion de la liste des variables au début des données
             donnees.insert(0,nom_variables)
     
-            #On passe d'un système donnees=[[var1,var2],[donnee1,donnee2]] à dataframe=[[var1,donnee1],[var2,donnee2]]
-            dataframe=[]
-            for k in range(len(donnees[0])):
-                dataframe.append([])
-            for i in range(len(donnees[0])):
-                for j in range(len(donnees)):
-                    dataframe[i].append(donnees[j][i])
+        #On passe d'un système donnees=[[var1,var2],[donnee1,donnee2]] à dataframe=[[var1,donnee1],[var2,donnee2]]
+        dataframe=[]
+        for k in range(len(donnees[0])):
+            dataframe.append([])
+        for i in range(len(donnees[0])):
+            for j in range(len(donnees)):
+                dataframe[i].append(donnees[j][i])
 
-            #Conversion des nombres en float
-            for i in range(len(dataframe)):
-                for j in range(len(dataframe[0])):
-                    if isfloat(dataframe[i][j])==True:
-                        dataframe[i][j]=float(dataframe[i][j])        
-            return dataframe
+        #Conversion des nombres en float
+        for i in range(len(dataframe)):
+            for j in range(len(dataframe[0])):
+                if isfloat(dataframe[i][j])==True:
+                    dataframe[i][j]=float(dataframe[i][j])        
+        return dataframe
 
 
 

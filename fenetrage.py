@@ -4,6 +4,19 @@ from selection import Selection
 class Fenetrage(Transformation):
 #On créé la liste des variables
     def __init__(self,dataframe,date1,date2):
+        '''Fenêtre la base de données
+
+        Conserve uniquement les données comprises entre deux dates 
+
+        Parameters
+        ----------
+        dataframe : table
+            La base de données
+        date1 : ???????????????????????
+            La date de début pour le fenêtrage
+        date2 : ????????????????????????????
+            La date de fin du fenêtrage
+        '''
         self.dataframe=dataframe
         self.date1=date1
         self.date2=date2

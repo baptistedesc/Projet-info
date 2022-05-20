@@ -3,12 +3,19 @@ import matplotlib.pyplot as plt
 
 class Boxplot(Estimateur): 
     def __init__(self,dataframe) -> None:
+        '''Construit une boxplot à partir d'un dataframe
+
+        Parameters
+        ----------
+        dataframe : table
+            le dataframe, adapté à la création d'une boxplot
+        '''     
         self.dataframe = dataframe
     
 
     def execute(self, tableau):
-        #Il faut créé un tableau adapté à la création d'un boxplot
-        #On prend en compte que le première élément de chaque liste est le nom de la colonne
+        #Il faut créer un tableau adapté à la création d'une boxplot
+        #On ne prend en compte que le premier élément de chaque liste et le nom de la colonne
         nouveau_tableau = []
         row = 0
         col = 0

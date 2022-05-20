@@ -6,6 +6,15 @@ from transformation import Transformation
 class Selection(Transformation):
 #On créé la liste des variables
     def __init__(self,dataframe):
+        '''Sélectionne certaines variables d'une base de données
+        
+        Renvoie une nouvelle basse de données contenant seulement ces variables
+
+        Parameters
+        ----------
+        dataframe : table
+            La base de données
+        '''
         self.dataframe=dataframe
 
     def execute(self,variable):

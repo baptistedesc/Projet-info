@@ -1,13 +1,13 @@
-from importer import Importer
+from Importer import importer
 from distutils.log import error
 import csv
 
-class datatable:
-    def __init__(self,datatable):
-        self.datatable=datatable
+class Datatable:
+        
+    def __init__(self):
 
     def chargement(self,filename,folder):
-        return Importer.lire(filename,folder)
+        self.datatable=importer.lire(filename,folder)
 
     def resume(self):
         resume=[]
@@ -39,9 +39,9 @@ folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
 filename = '2022-03.json.gz'
 
 Frac=[['a',2,3],['b',5,6]]
-# print(dataframe.chargement(Frac,filename,folder))
-# print(dataframe.resume(Frac))
+# print(datatable.chargement(Frac,filename,folder))
+# print(datatable.resume(Frac))
 
 
-dataframe.exporter(Frac)
+datatable.exporter(Frac)
 
