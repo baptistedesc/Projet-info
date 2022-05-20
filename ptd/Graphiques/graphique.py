@@ -1,8 +1,7 @@
 from ptd.operation import Operation
 from abc import ABC, abstractmethod
 
-class Transformation(ABC):
+class Graphique(Operation,ABC):
     @abstractmethod
     def execute():
         pass
-

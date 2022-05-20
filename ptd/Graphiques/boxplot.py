@@ -1,7 +1,7 @@
-from estimateur import Estimateur
+from ptd.graphiques.graphique import Graphique
 import matplotlib.pyplot as plt 
 
-class Boxplot(Estimateur): 
+class Boxplot(Graphique): 
     def __init__(self,dataframe) -> None:
         '''Construit une boxplot à partir d'une base de données
 
