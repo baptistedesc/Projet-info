@@ -3,21 +3,18 @@ import csv
 
 class Datatable:
         
-    def __init__(self,valeurs,nom_colonnes):
-        self.values=valeurs
-        self.nom_colonnes=nom_colonnes
-
-    # def chargement(self,filename,folder):
-    #     self.datatable=importer.lire(filename,folder)
+    def __init__(self,valeurs,variables):
+        self.valeurs=valeurs
+        self.variables=variables
 
     def resume(self):
         resume=[]
-        n=len(self.datatable)
+        n=len(self.variables)
         for i in range(n):
             resume.append([])
         for i in range(n):
-            resume[i].append(self.datatable[i][0])
-            resume[i].append(type(self.datatable[i][1]))
+            resume[i].append(self.variables[i])
+            resume[i].append(type(self.valeurs[i][0]))
         s=0
         f=0
         for i in range(n):
@@ -30,7 +27,10 @@ class Datatable:
     def exporter(self):
         with open('dataframe.csv','w',newline='') as file:
             writer=csv.writer(file,quoting=csv.QUOTE_ALL,delimiter=';')
-            writer.writerows(self.datatable)
+            for i in range(len(self.variables)):
+                datatable=self.valeurs[:][:]
+                datatable[i].insert(0,self.variables[i])
+            writer.writerows(datatable)
 
 
 # Pour tester la fonction chargement (je sais pas comment faire avec le __main__)
@@ -45,4 +45,5 @@ class Datatable:
 
 
 # datatable.exporter(Frac)
+
 
