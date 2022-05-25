@@ -3,28 +3,37 @@ import gzip
 import csv
 import json
 
-def isfloat(value):
-  try:
-    float(value)
-    return True
-  except ValueError:
-    return False
+from datatable import Datatable
 
-class dataframe:
-    def __init__(self,folder,filename):
-        '''Créée une base de données
+def isfloat(valeur):
+    """Renvoie True si value est un flottant, False sinon
+    Parameters
+    ----------
+    value : 
+        Valeur dont on cherche à déterminer le type
+    Returns
+    -------
+    bool
+        True si value est un flottant, False sinon
 
-        Parameters
-        ----------
-        folder : str
-            Le chemin de la base de données à manipuler
-        filename : str
-            Le nom du fichier à importer
-        '''        
-        self.folder=folder
+    Examples
+    --------
+    >>> isfloat(9.0)
+    True
+    >>> fonction('test')
+    False
+    """
+    try:
+        float(valeur)
+        return True
+    except ValueError:
+        return False
+
+class Importer:
+    def __init__(self,filename,folder):
         self.filename=filename
-
-    def chargement(self):
+        self.folder=folder
+    def lire(self):
         #Si le fichier est de type CSV
         if '.csv.gz' in self.filename:
             donnees = []
@@ -38,7 +47,7 @@ class dataframe:
 
         #Si le fichier est de type json
         elif '.json.gz' in self.filename:
-            with gzip.open(folder + filename, mode='rt', encoding='utf-8') as gzfile :
+            with gzip.open(self.folder + self.filename, mode='rt', encoding='utf-8') as gzfile :
                 data0 = json.load(gzfile)
             data1=[obs['fields'] for obs in data0]
 
@@ -78,58 +87,20 @@ class dataframe:
         #Conversion des nombres en float
         for i in range(len(dataframe)):
             for j in range(len(dataframe[0])):
-                 if isfloat(dataframe[i][j])==True:
-                     dataframe[i][j]=float(dataframe[i][j])        
-        return dataframe
-
-    def resume(self):
-        donnees=dataframe.chargement(self)
-        resume=[]
-        n=len(donnees)
-        for i in range(n):
-            resume.append([])
-        for i in range(n):
-            resume[i].append(donnees[i][0])
-            resume[i].append(type(donnees[i][1]))
-        s=0
-        f=0
-        for i in range(n):
-                if resume[i][1] is str:
-                    s=s+1
-                f=f+1
-        print('Il y a ' + str(s) + ' variables str et ' + str(f) + ' variables numériques soit ' + str(s+f) +' variables.')
-        return resume
-
-    def exporter(dataframe):
-        with open('dataframe.csv','w',newline='') as file:
-            writer=csv.writer(file,quoting=csv.QUOTE_ALL,delimiter=';')
-            writer.writerows(dataframe)
+                if isfloat(dataframe[i][j])==True:
+                    dataframe[i][j]=float(dataframe[i][j])
+        nom_colonnes=[]
+        for i in range(len(dataframe)):
+            nom_colonnes.append(dataframe[i][0])
+            del dataframe[i][0]
 
 
-# Pour tester la fonction chargement (je sais pas comment faire avec le __main__)
-# folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
-# filename = 'synop.201301.csv.gz'
-folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
-filename = '2022-03.json.gz'
-
-# Frac=dataframe(folder,filename)
-# print(dataframe.chargement(Frac))
-# print(dataframe.resume(Frac))
-
-
-ABC=[[1,2,3],[4,5,6]]
-dataframe.exporter(ABC)
+        return datatable.Datatable(valeurs=dataframe, nom_colonnes=name)
 
 
 
 
 
 
-
-
-
-
-
-
-
-
+# ABC=[[1,2,3],[4,5,6]]
+# dataframe.exporter(ABC)

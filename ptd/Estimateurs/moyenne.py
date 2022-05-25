@@ -3,13 +3,16 @@ import doctest
 
 
 class Moyenne(Estimateur):
+    '''
+    >>> [1,2,3]
+    2
+    '''
     def __init__(self,variable) -> None:
         
      
         #C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)
    
         self.variable=variable
-        self.valeur = self.execute()
 
     def execute(self):
         '''
@@ -25,7 +28,12 @@ class Moyenne(Estimateur):
         moyenne = som/len(self.variable)
         return moyenne
 
+
+if __name__ == '__main__':
+    # Utilisation des tests unitaires doctest pour tester le module.
+    # Usuellement, le code dans ce bloc if n'est exécuté que pour des tests, d'où
+    # l'intérêt d'y mettre les doctests.
+    import doctest
+    doctest.testmod()
+
     
-    if __name__ == '__main__':
-        import doctest
-        doctest.testmod()

@@ -1,7 +1,7 @@
 #Fonctions pour pouvoir sélectionner une variable avec son nom (comme avec un dictionnaire) 
 # plutôt qu'avec son indice, je sais pas encore dans quelle classe mettre ça
 
-from transformation import Transformation
+from ptd.transformations.transformation import Transformation
 
 class Selection(Transformation):
     def __init__(self,dataframe):
@@ -40,5 +40,3 @@ class Selection(Transformation):
         for i in range(len(self.dataframe))
             if self.dataframe[i][0]==variable:
                 return self.dataframe[i]
-
-        

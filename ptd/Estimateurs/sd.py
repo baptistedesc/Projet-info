@@ -1,4 +1,4 @@
-from estimateur import Estimateur
+from ptd.estimateurs.estimateur import Estimateur
 
 class Sd(Estimateur):
 #C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)    
@@ -11,7 +11,6 @@ class Sd(Estimateur):
             La variable
         '''
         self.variable = variable
-        self.valeur = self.execute()
     
     def execute(self):
         '''Calcule l'écart-type

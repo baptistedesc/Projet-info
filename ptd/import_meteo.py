@@ -12,4 +12,4 @@ with gzip.open(folder + filename, mode='rt') as gzfile :
 for i in range(len(data)):
     del data[i][-1]
 
-print(data)
+print(data[0])

@@ -1,4 +1,4 @@
-from transformation import Transformation
+from ptd.transformations.transformation import Transformation
 from cmath import sqrt
 from statistics import variance
 
@@ -13,24 +13,8 @@ class Reduction(Transformation):
         '''
         self.dataframe = dataframe
 
-  
 
     def execute(self, colonne) :
-
-        '''Réduit la variable demandée 
-
-        Parameters
-        ----------
-        colonne : str
-            Le nom de la variable à réduire
-
-        Returns
-        -------
-        table
-            La base de données initiale, avec la variable en question réduite
-        ''' 
-
-
         for i in range(len(self.dataframe)) :
             if str(self.dataframe[i][0])==str(colonne) :
                 moyenne = 0
