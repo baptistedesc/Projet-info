@@ -1,10 +1,10 @@
-from operation import Operation
-from estimateur import Estimateur
-from moyenne import Moyenne
-from variance import Variance
-from sd import Sd
+from ptd.operation import Operation
+from ptd.estimateurs.estimateur import Estimateur
+from ptd.estimateurs.moyenne import Moyenne
+from ptd.estimateurs.variance import Variance
+from ptd.estimateurs.sd import Sd
 import matplotlib.pyplot as plt 
-from boxplot import Boxplot
+from ptd.graphiques.boxplot import Boxplot
 
 
 var1 = [2,2,2,5,5,15]

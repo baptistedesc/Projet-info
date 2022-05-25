@@ -36,6 +36,12 @@ class Selection(Transformation):
         # des opérations dessus, mais je pense qu'il faudrait qu'on ait aussi un truc pour selectionner plusieurs variables et réduire la base de données à ça (un peu comme fenêtrage fait
         # une sélection sur les lignes, faire une sélection sur les colonnes mais qui modifie le dataframe)
         #On créé la liste des variables
+        for i in range(len(table.nom_colonnes)):
+            assert variable in table.nom_colonnes
+        for i in range(len(table.nom_colonnes)) :
+            if table.nom_colonnes[i]==variable:
+                return Table(table.nom_colonnes[i],table.valeurs[i])
+
+#tu penses ca marche ca ?
         indice=table.nom_colonnes.index(variable)
         return Table(table.nom_colonnes[indice],table.valeurs[indice])
-
