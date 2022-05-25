@@ -102,5 +102,6 @@ if __name__ == '__main__':
     beta=Importer(filename,folder)
     alpha=Importer.lire(beta)
     table.Table.afficher(alpha)
+    print(alpha.nom_colonnes)
 
 

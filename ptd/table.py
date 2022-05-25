@@ -11,6 +11,7 @@ def transpose(l1):
     return l2
 
 
+
 class Table:
     '''
     >>> nom_colonnes=['fruits','légumes']
