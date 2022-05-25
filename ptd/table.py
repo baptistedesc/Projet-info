@@ -1,23 +1,28 @@
 from distutils.log import error
 import csv
 
-class Datatable:
+class Table:
+    '''
+    >>> nom_colonnes=['fruits','légumes']
+    >>> variables=[[1,2],[3,4]]
+    >>> alpha=Table(nom_colonnes,variables)
+    >>> Table.resume(alpha)
+    Il y a 0 variables str et 2 variables numériques soit 2 variables.
+    [['fruits', <class 'int'>], ['légumes', <class 'int'>]]
+    '''
         
-    def __init__(self,valeurs,nom_colonnes):
-        self.values=valeurs
+    def __init__(self,nom_colonnes,variables):
         self.nom_colonnes=nom_colonnes
-
-    # def chargement(self,filename,folder):
-    #     self.datatable=importer.lire(filename,folder)
+        self.variables=variables
 
     def resume(self):
         resume=[]
-        n=len(self.datatable)
+        n=len(self.variables)
         for i in range(n):
             resume.append([])
         for i in range(n):
-            resume[i].append(self.datatable[i][0])
-            resume[i].append(type(self.datatable[i][1]))
+            resume[i].append(self.nom_colonnes[i])
+            resume[i].append(type(self.variables[i][0]))
         s=0
         f=0
         for i in range(n):
@@ -30,7 +35,10 @@ class Datatable:
     def exporter(self):
         with open('dataframe.csv','w',newline='') as file:
             writer=csv.writer(file,quoting=csv.QUOTE_ALL,delimiter=';')
-            writer.writerows(self.datatable)
+            for i in range(len(self.nom_colonnes)):
+                datatable=self.valeurs[:][:]
+                datatable[i].insert(0,self.nom_colonnes[i])
+            writer.writerows(datatable)
 
 
 # Pour tester la fonction chargement (je sais pas comment faire avec le __main__)
@@ -46,3 +54,9 @@ class Datatable:
 
 # datatable.exporter(Frac)
 
+if __name__ == '__main__':
+    # Utilisation des tests unitaires doctest pour tester le module.
+    # Usuellement, le code dans ce bloc if n'est exécuté que pour des tests, d'où
+    # l'intérêt d'y mettre les doctests.
+    import doctest
+    doctest.testmod()
