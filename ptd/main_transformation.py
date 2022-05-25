@@ -1,5 +1,5 @@
 from operation import Operation
-from transformation import Transformation
+from ptd.transformations.transformation import Transformation
 from selection import Selection
 from centrage import Centrage
 
