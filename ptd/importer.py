@@ -3,7 +3,7 @@ import gzip
 import csv
 import json
 
-from datatable import Datatable
+import table
 
 def isfloat(valeur):
     """Renvoie True si value est un flottant, False sinon
@@ -93,14 +93,14 @@ class Importer:
         for i in range(len(dataframe)):
             nom_colonnes.append(dataframe[i][0])
             del dataframe[i][0]
+        return table.Table(nom_colonnes,dataframe)
 
 
-        return datatable.Datatable(valeurs=dataframe, nom_colonnes=name)
+if __name__ == '__main__':
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+    filename = '2013-01.json.gz' 
+    beta=Importer(filename,folder)
+    alpha=Importer.lire(beta)
+    table.Table.afficher(alpha)
 
 
-
-
-
-
-# ABC=[[1,2,3],[4,5,6]]
-# dataframe.exporter(ABC)
