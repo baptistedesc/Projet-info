@@ -1,4 +1,4 @@
-from table import Table
+from ptd.table import Table
 class Agregation_temp():
     def __init__(self, table1, table2) :
 
