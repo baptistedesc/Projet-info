@@ -2,7 +2,7 @@ from ptd.table import Table
 class Agregation_temp():
     def __init__(self, table1, table2) :
 
-    """Concatène des bases de données contenant les mêmes colonnes
+        """Concatène des bases de données contenant les mêmes colonnes
     Utile notamment pour constituer une seule base de données à partir de plusieurs fichiers concernant le même sujet, mais découpés dans le temps (ex : les relevés météo par mois)
     Parameters
     ----------
