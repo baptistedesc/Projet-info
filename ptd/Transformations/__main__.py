@@ -1,4 +1,4 @@
-from ptd.transformations.selection import Selection
+from ptd .transformations.selection import Selection
 from ptd.table import Table
 nom_colonnes=['fruits','légumes']
 valeurs=[[1,2],[3,4]]
