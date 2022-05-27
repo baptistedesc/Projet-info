@@ -33,9 +33,13 @@ class Agregation_temp():
     def execute(self,table2):
         self.nv_donnees=[]
         assert (self.table1.nom_colonnes==table2.nom_colonnes)
-        self.nv_donnees= self.table1.valeurs + self.table2.valeurs
+        for i in range(len(self.table1.valeurs)):
+            for j in range(len(table2.valeurs[i])):
+                self.table1.valeurs[i].append(table2.valeurs[i][j])
+        self.nv_donnees= self.table1.valeurs + table2.valeurs
         nv_table=Table(self.table1.nom_colonnes,self.nv_donnees)
         return nv_table
+
 
 if __name__ == '__main__':
     import doctest
