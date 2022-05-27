@@ -1,3 +1,4 @@
+from sklearn.metrics import jaccard_similarity_score
 from ptd.table import Table
 class Agregation_temp():
     def __init__(self, table1, table2) :
@@ -26,3 +27,8 @@ class Agregation_temp():
         self.nv_donnees= table1.variables + table2.variables
         nv_table=Table(self.nom_colonnes,self.nv_donnees)
         return nv_table
+
+
+table.valeurs.index('population')=j
+
+table.valeurs[j]
