@@ -1,16 +1,16 @@
 from ptd.transformations.transformation import Transformation
 
 class Centrage (Transformation) :
-    def __init__ (self, dataframe) :
+    def __init__ (self, table) :
         '''Centre une variable
 
         Parameters
         ----------
-        dataframe : table
+        table : table
             La base de données
         '''
         
-        self.dataframe=dataframe
+        self.table=table
 
     def execute(self,colonne) :
         '''Centre la variable demandée 
@@ -26,13 +26,13 @@ class Centrage (Transformation) :
             La base de données initiale, avec la variable en question centrée
         ''' 
         
-        for i in range(len(self.dataframe)) :
-            if str(self.dataframe[i][0])==colonne :
+        for i in range(len(self.table)) :
+            if str(self.table[i][0])==colonne :
                 somme=0
                 moyenne=0
-                for k in range(1,len(self.dataframe[i])):
-                    somme = somme + self.dataframe[i][k]
-                moyenne=somme/(len(self.dataframe[i])-1)
-                for j in range(1,len(self.dataframe[i])):
-                    self.dataframe[i][j]=self.dataframe[i][j] - moyenne
-        return self.dataframe
+                for k in range(1,len(self.table[i])):
+                    somme = somme + self.table[i][k]
+                moyenne=somme/(len(self.table[i])-1)
+                for j in range(1,len(self.table[i])):
+                    self.table[i][j]=self.table[i][j] - moyenne
+        return self.table

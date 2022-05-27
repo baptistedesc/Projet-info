@@ -3,21 +3,21 @@ from ptd.transformations.selection import Selection
 
 class Fenetrage(Transformation):
 #On créé la liste des variables
-    def __init__(self,dataframe,date1,date2):
+    def __init__(self,table,date1,date2):
         '''Fenêtre la base de données
 
         Conserve uniquement les données comprises entre deux dates 
 
         Parameters
         ----------
-        dataframe : table
+        table : table
             La base de données
         date1 : ???????????????????????
             La date de début pour le fenêtrage
         date2 : ????????????????????????????
             La date de fin du fenêtrage
         '''
-        self.dataframe=dataframe
+        self.table=table
         self.date1=date1
         self.date2=date2
     def execute(self):
@@ -32,8 +32,8 @@ class Fenetrage(Transformation):
         date=Selection.execute(date)
         for i in range (1,len(date)):
             if date1>date[i] or date2<date[i]:
-                for j in range len(self.dataframe):
-                    del self.dataframe[j][i]
-        return self.dataframe
+                for j in range len(self.table):
+                    del self.table[j][i]
+        return self.table
 
 
