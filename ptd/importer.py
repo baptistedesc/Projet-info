@@ -96,6 +96,7 @@ class Importer:
         return table.Table(nom_colonnes,dataframe)
 
 
+<<<<<<< HEAD
 # if __name__ == '__main__':
 #     folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_electricite/'
 #     filename = '2013-01.json.gz' 
@@ -103,5 +104,14 @@ class Importer:
 #     alpha=Importer.lire(beta)
 #     # table.Table.afficher(alpha)
 #     print(alpha.nom_colonnes)
+=======
+if __name__ == '__main__':
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+    filename = '2013-01.json.gz' 
+    beta=Importer(filename,folder)
+    alpha=Importer.lire(beta)
+    table.Table.afficher(alpha)
+    print(alpha.nom_colonnes)
+>>>>>>> e774166cca24f91122be2d25ea4bf2e8a1df8ab8
 
 

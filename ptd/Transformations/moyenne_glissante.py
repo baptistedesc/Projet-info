@@ -2,15 +2,15 @@ from ptd.transformations.transformation import Transformation
 from ptd.transformations.selection import Selection
 
 class Moyenne_Glissante (Transformation) :
-    def __init__ (self, dataframe) :
+    def __init__ (self, table) :
         '''Calcule la série des moyennes glissantes d'une variable
 
         Parameters
         ----------
-        dataframe : table
+        table : Table
             La base de données
         '''
-        self.dataframe=dataframe
+        self.table=table
 
     def execute(self,variable,taille_intervalle):
         '''Calcule la série des moyennes glissantes d'une variable
@@ -36,8 +36,8 @@ class Moyenne_Glissante (Transformation) :
         for i in range(len(data)-taille_intervalle):
             for j in range(i,i+taille_intervalle):
                 moyenne_glissante[i]=(moyenne_glissante[i]+data[i+j])/taille_intervalle
-        self.dataframe.append(moyenne_glissante)
-        return self.dataframe
+        self.table.append(moyenne_glissante)
+        return self.table
 
 if __name__ == "__main__":
     import doctest

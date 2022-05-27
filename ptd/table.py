@@ -1,6 +1,16 @@
 from distutils.log import error
 import csv
 
+def transpose(l1):
+    l2=[]
+    for i in range(len(l1[0])):
+        row =[]
+        for item in l1:
+            row.append(item[i])
+        l2.append(row)
+    return l2
+
+
 class Table:
     '''
     >>> nom_colonnes=['fruits','légumes']
@@ -9,8 +19,7 @@ class Table:
     >>> Table.resume(alpha)
     Il y a 0 variables str et 2 variables numériques soit 2 variables.
     [['fruits', <class 'int'>], ['légumes', <class 'int'>]]
-    '''
-        
+    ''' 
     def __init__(self,nom_colonnes,valeurs):
         self.nom_colonnes=nom_colonnes
         self.valeurs=valeurs
@@ -36,21 +45,21 @@ class Table:
         return resume
 
     def exporter(self):
-        with open('dataframe.csv','w',newline='') as file:
+        with open('table.csv','w',newline='') as file:
             writer=csv.writer(file,quoting=csv.QUOTE_ALL,delimiter=';')
             for i in range(len(self.nom_colonnes)):
                 datatable=self.valeurs[:][:]
                 datatable[i].insert(0,self.nom_colonnes[i])
-            for i in range(len(datatable)):
-                for j in range(len(datatable[0])):
-                    datatable[i][j]=datatable[j][i]
-            writer.writerows(datatable)
+            dataframe=transpose(datatable)
+            writer.writerows(dataframe)
 
 
 if __name__ == '__main__':
     import doctest
     doctest.testmod(verbose=True)
     nom_colonnes=['fruits','légumes']
-    variables=[[1,2],[3,4]]
-    Objet=Table(nom_colonnes,variables)
+    valeurs=[[1,2],[3,4]]
+    Objet=Table(nom_colonnes,valeurs)
     Table.exporter(Objet)
+
+*
