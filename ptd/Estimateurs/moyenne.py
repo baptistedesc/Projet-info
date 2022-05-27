@@ -1,4 +1,4 @@
-from estimateur import Estimateur
+from Estimateurs.estimateur import Estimateur
 import doctest
 
 
@@ -7,14 +7,11 @@ class Moyenne(Estimateur):
     >>> [1,2,3]
     2
     '''
-    def __init__(self,variable) -> None:
+    def __init__(self) -> None:
+        pass
         
      
-        #C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)
-   
-        self.variable=variable
-
-    def execute(self):
+    def execute(self,colonne, table):
         '''
         >>> var1 = [2,2,2,5,5,5]
         >>> m1 = Moyenne(var1)
@@ -22,10 +19,13 @@ class Moyenne(Estimateur):
         3.05
         '''
    
-        som=0
-        for i in self.variable:
-            som+=i
-        moyenne = som/len(self.variable)
+               
+        indice = table.nom_colonnes.index(colonne)
+        moyenne = 0
+        somme = 0
+        for k in range(0,len(table.valeurs[indice])):
+            somme = table.valeurs[indice][k] +somme
+        moyenne=somme/(len(table.valeurs[indice]))
         return moyenne
 
 

@@ -1,16 +1,12 @@
-from ptd.graphiques.graphique import Graphique
+from Graphiques.graphique import Graphique
 import matplotlib.pyplot as plt 
 
 class Boxplot(Graphique): 
-    def __init__(self,dataframe) -> None:
+    def __init__(self) -> None:
         '''Construit une boxplot à partir d'une base de données
 
-        Parameters
-        ----------
-        dataframe : table
-            La base de données
+    
         '''     
-        self.dataframe = dataframe
     
 
     def execute(self, tableau):
