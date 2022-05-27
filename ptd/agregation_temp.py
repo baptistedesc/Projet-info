@@ -1,7 +1,20 @@
 from sklearn.metrics import jaccard_similarity_score
 from ptd.table import Table
+
 class Agregation_temp():
-    def __init__(self, table1, table2) :
+    '''
+    Examples
+    -----------------
+    >>> nom_colonnes=['fruits','légumes']
+    >>> valeurs1=[['pomme','poire'],['haricot','pois']]
+    >>> valeurs2=[['fraise','framboise'],['poireau','tomate']]
+    >>> valeurs3=[['pomme','poire','fraise','framboise'],['haricot','pois','poireau','tomate']]
+    >>> table1=table(nom_colonnes,valeurs1)
+    >>> table2=table(nom_colonnes,valeurs2)
+    >>> Agregation_temp.execute(table1,table2)
+    table(nom_colonnes,valeurs3)
+    '''
+    def __init__(self, table1) :
         """Concatène des bases de données contenant les mêmes colonnes
         Utile notamment pour constituer une seule base de données à partir de plusieurs fichiers concernant le même sujet, mais découpés dans le temps (ex : les relevés météo par mois)
         Parameters
@@ -14,21 +27,18 @@ class Agregation_temp():
         Returns
         -------
         Dataframe
-
-        Examples
-        --------
-        >>> 
         """
         self.table1=table1
-        self.table2=table2
+
+    def execute(self,table2):
         self.nv_donnees=[]
-        assert (table1.nom_colonnes==table2.nom_colonnes)
-        self.nom_colonnes=table1.nom_colonnes
-        self.nv_donnees= table1.variables + table2.variables
-        nv_table=Table(self.nom_colonnes,self.nv_donnees)
+        assert (self.table1.nom_colonnes==table2.nom_colonnes)
+        self.nv_donnees= self.table1.valeurs + self.table2.valeurs
+        nv_table=Table(self.table1.nom_colonnes,self.nv_donnees)
         return nv_table
 
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
 
-table.valeurs.index('population')=j
 
-table.valeurs[j]
