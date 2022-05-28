@@ -16,8 +16,8 @@ class Suppression(Transformation):
         assert variable in table.nom_colonnes
         i=table.nom_colonnes.index(variable)
         del table.nom_colonnes[i]
-        for j in range(len(table.valeurs[i])):
-            del table.valeurs[i][j]
+        del table.valeurs[i]
+        return table
 
 
 if __name__ == '__main__':
@@ -25,6 +25,6 @@ if __name__ == '__main__':
     doctest.testmod(verbose=True)
     colonnes=['fruits','legumes','sante']
     valeurs=[['kiwi','poire','abricot'],['haricot','pois','mq'],['bien','pas bien','moyen']]
-    table1=Table(nom_colonnes=colonnes,valeurs=valeurs)
-    Suppression.execute(table1,'fruits')
-    Table.afficher(table1)
+    table=Table(colonnes,valeurs)
+    Suppression.execute(table,'fruits')
+    Table.afficher(table)
