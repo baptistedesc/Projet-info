@@ -37,9 +37,23 @@ class Jointure(Transformation):
         elif type=='right':
             return Jointure.execute(table2,cle2,table1,cle1,'left')
 
-        # ça ne fonctionne pas, je ne sais pas du tout pourquoi
         # elif type=='inner':
-        #     return Jointure.execute(Jointure.execute(table1,cle1,table2,cle2,'left'),cle1,table2,cle2,'right')
+            # Table1=Jointure.execute(table1,cle1,table2,cle2,'left')
+            # Table2=Jointure.execute(table1,cle1,table2,cle2,'right')
+            # y,z=Table1.nom_colonnes.index(cle1),Table2.nom_colonnes.index(cle2)
+            # return y,z
+            # for k in range(len(Table1.valeurs[y])):
+            #     t=0
+            #     for p in range(len(Table2.valeurs[z])):
+            #         if Table1.valeurs[y][k]==Table2.valeurs[z][p]:
+            #             t=t+1
+            #     if t==0:
+            #         for x in range(len(Table1.valeurs)):
+            #             del Table1.valeurs[x][k]
+            # return Table1
+                
+
+            
 
 
 
@@ -52,5 +66,5 @@ if __name__ == '__main__':
     valeurs2=[['8 ans','12 ans','7 ans'],['poire','pomme','abricot'],['heureux','pas heureux','moyen heureux']]
     test1=Table(nom_colonnes=colonnes1,valeurs=valeurs1)
     test2=Table(nom_colonnes=colonnes2,valeurs=valeurs2)
-    test3=Jointure.execute(test1,'fruits',test2,'fruits','right')
+    test3=Jointure.execute(test1,'fruits',test2,'fruits','inner')
     Table.afficher(test3)

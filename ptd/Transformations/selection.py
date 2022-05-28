@@ -5,6 +5,7 @@ from ptd.table import Table
 from ptd.transformations.transformation import Transformation
 
 class Selection(Transformation):
+
     def __init__(self):
         '''Sélectionne certaines variables d'une base de données
         
@@ -17,13 +18,13 @@ class Selection(Transformation):
         '''
     
 
-    def execute(self,variables,table):
+    def execute(table,variables):
         '''Sélectionne la variable demandée 
 
         Parameters
         ----------
         variables : liste
-            Le nom de la variable à selectionner
+            Liste des variables sélectionnées
         table : Table
             La base de données
 
@@ -32,15 +33,27 @@ class Selection(Transformation):
         liste_index
             liste des indices des variables recherchées
         ''' 
-        #Pas sûr d'avoir complètement capté comment ça marche donc à vérifier. En fait comme c'est codé selection ça sert juste à prendre une variable à part pour après faire 
-        # des opérations dessus, mais je pense qu'il faudrait qu'on ait aussi un truc pour selectionner plusieurs variables et réduire la base de données à ça (un peu comme fenêtrage fait
-        # une sélection sur les lignes, faire une sélection sur les colonnes mais qui modifie le dataframe)
-        #On créé la liste des variables
-        liste_index=[]
         for i in range(len(variables)):
             assert variables[i] in table.nom_colonnes
-        for j in range(len(variables)):
-            liste_index.append(table.nom_colonnes.index(variables[i]))
-        return liste_index
+        for j in range(len(table.nom_colonnes)):
+            if table.nom_colonnes[j] not in variables:
+                del table.nom_colonnes[j]
+                del table.valeurs[j]
+        return table
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+    colonnes=['fruits','legumes','sante']
+    valeurs=[['kiwi','poire','abricot'],['haricot','pois','mq'],['bien','pas bien','moyen']]
+    table1=Table(nom_colonnes=colonnes,valeurs=valeurs)
+    variables1=['fruits','legumes']
+    variables2=['fruits']
+    alpha=Selection.execute(table1,variables1)
+    Table.afficher(alpha)
+    beta=Selection.execute(table1,variables2)
+    Table.afficher(beta)
+
+
 
 
