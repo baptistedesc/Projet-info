@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from operation import Operation
 from transformation import Transformation
 from selection import Selection
@@ -6,12 +5,6 @@ from centrage import Centrage
 from table import Table
 
 
-=======
-from ptd.operation import Operation
-from ptd.transformations.transformation import Transformation
-from ptd.transformations.selection import Selection
-from ptd.transformations.centrage import Centrage
->>>>>>> e774166cca24f91122be2d25ea4bf2e8a1df8ab8
 
 from ptd.transformations.reduction import Reduction
 
