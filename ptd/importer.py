@@ -3,7 +3,7 @@ import gzip
 import csv
 import json
 
-import table
+from ptd.table import Table
 
 def isfloat(valeur):
     """Renvoie True si value est un flottant, False sinon
@@ -93,15 +93,15 @@ class Importer:
         for i in range(len(dataframe)):
             nom_colonnes.append(dataframe[i][0])
             del dataframe[i][0]
-        return table.Table(nom_colonnes,dataframe)
+        return Table(nom_colonnes,dataframe)
 
 
-# if __name__ == '__main__':
-#     folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_electricite/'
-#     filename = '2013-01.json.gz' 
-#     beta=Importer(filename,folder)
-#     alpha=Importer.lire(beta)
-#     # table.Table.afficher(alpha)
-#     print(alpha.nom_colonnes)
+if __name__ == '__main__':
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+    filename = '2013-01.json.gz' 
+    beta=Importer(filename,folder)
+    alpha=Importer.lire(beta)
+    Table.afficher(alpha)
+    print(alpha.nom_colonnes)
 
 

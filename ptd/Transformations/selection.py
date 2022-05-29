@@ -2,6 +2,7 @@
 # plutôt qu'avec son indice, je sais pas encore dans quelle classe mettre ça
 
 from ptd.table import Table
+from ptd.importer import Importer
 from ptd.transformations.transformation import Transformation
 
 class Selection(Transformation):
@@ -10,7 +11,7 @@ class Selection(Transformation):
         pass
     
 
-    def execute(self,colonnes,table):
+    def execute(colonnes,table):
         '''Sélectionne la variable demandée 
 
         Parameters
@@ -25,9 +26,16 @@ class Selection(Transformation):
         list
             Les variables demandées.
      ''' 
-        selection = []
-        for i in range(0,len(colonnes)):
+        for i in range(len(colonnes)):
             indice = table.nom_colonnes.index(colonnes[i])
             selection.append(table.valeurs[indice])
         return selection
      
+
+if __name__ == '__main__':
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+    filename = '2013-01.json.gz' 
+    beta=Importer(filename,folder)
+    alpha=Importer.lire(beta)
+    gamma=Selection.execute(['date'],alpha)
+    Table.afficher(gamma)
