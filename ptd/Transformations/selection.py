@@ -26,11 +26,13 @@ class Selection(Transformation):
         list
             Les variables demandées.
      ''' 
+        nom_colonnes=[]
+        valeurs=[]
         for i in range(len(table.nom_colonnes)):
-            if table.nom_colonnes[i] not in colonnes:
-                del table.nom_colonnes[i]
-                del table.valeurs[i]
-        return table
+            if table.nom_colonnes[i] in colonnes:
+                nom_colonnes.append(table.nom_colonnes[i])
+                valeurs.append(table.valeurs[i])
+        return Table(nom_colonnes,valeurs)
      
 
 if __name__ == '__main__':
@@ -38,5 +40,6 @@ if __name__ == '__main__':
     filename = '2013-01.json.gz' 
     beta=Importer(filename,folder)
     alpha=Importer.lire(beta)
-    gamma=Selection.execute(['date'],alpha)
+    print(alpha.nom_colonnes)
+    gamma=Selection.execute(['date','date_heure'],alpha)
     Table.afficher(gamma)

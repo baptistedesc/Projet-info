@@ -14,5 +14,6 @@ class Fenetrage(Transformation):
         table
             La base de données initiale, mais réduite à la période demandée
         ''' 
-
+        assert date2>date1:
+        
 
