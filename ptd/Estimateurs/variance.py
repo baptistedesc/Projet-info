@@ -1,4 +1,4 @@
-from ptd.Estimateurs.estimateur import Estimateur
+from Estimateurs.estimateur import Estimateur
 
 
 class Variance(Estimateur):
@@ -29,7 +29,7 @@ class Variance(Estimateur):
         
 
         sum=0
-        for h in range(0,table.valeurs[indice]):
+        for h in range(0,len(table.valeurs[indice])):
             sum+=(table.valeurs[indice][h]-moyenne)**2
         variance = sum/len(table.valeurs[indice])
         return variance

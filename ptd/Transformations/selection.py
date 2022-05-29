@@ -10,42 +10,24 @@ class Selection(Transformation):
         pass
     
 
-    def execute(table,variables):
+    def execute(self,colonnes,table):
         '''Sélectionne la variable demandée 
 
         Parameters
         ----------
-        variables : liste
-            Liste des variables sélectionnées
+        colonnes : liste
+            Les noms des variables à selectionner
         table : Table
-            La base de données
+            La table contenant les variables
 
         Returns
         -------
-        liste_index
-            liste des indices des variables recherchées
-        ''' 
-        for i in range(len(variables)):
-            assert variables[i] in table.nom_colonnes
-        for j in range(len(table.nom_colonnes)):
-            if table.nom_colonnes[j] not in variables:
-                del table.nom_colonnes[j]
-                del table.valeurs[j]
-        return table
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=True)
-    colonnes=['fruits','legumes','sante']
-    valeurs=[['kiwi','poire','abricot'],['haricot','pois','mq'],['bien','pas bien','moyen']]
-    table1=Table(nom_colonnes=colonnes,valeurs=valeurs)
-    variables1=['fruits','legumes']
-    variables2=['fruits']
-    alpha=Selection.execute(table1,variables1)
-    Table.afficher(alpha)
-    beta=Selection.execute(table1,variables2)
-    Table.afficher(beta)
-
-
-
-
+        list
+            Les variables demandées.
+     ''' 
+        selection = []
+        for i in range(0,len(colonnes)):
+            indice = table.nom_colonnes.index(colonnes[i])
+            selection.append(table.valeurs[indice])
+        return selection
+     

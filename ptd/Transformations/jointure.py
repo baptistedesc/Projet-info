@@ -1,5 +1,5 @@
-from ptd.transformations.transformation import Transformation
-from ptd.table import Table
+from ptd.transformation import Transformation
+from table import Table
 
 def transpose(l1):
     l2=[]
@@ -76,6 +76,8 @@ class Jointure(Transformation):
 
         elif type=='inner':
             variables=[cle1,cle2]
+            # i=table2.nom_colonnes.index(cle2)
+            # table2.nom_colonnes[i]=cle1
             # Transposition des deux tables en vue du parcours des observations
             indexs1 = [table1.nom_colonnes.index(variable) for variable in variables]
             indexs2 = [table2.nom_colonnes.index(variable) for variable in variables]
