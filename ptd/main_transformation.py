@@ -1,10 +1,7 @@
 from operation import Operation
-from transformation import Transformation
-from selection import Selection
-from centrage import Centrage
-from table import Table
-
-
+from transformations.transformation import Transformation
+from transformations.selection import Selection
+from transformations.centrage import Centrage
 
 from ptd.transformations.reduction import Reduction
 

@@ -1,4 +1,4 @@
-from Estimateurs.estimateur import Estimateur
+from ptd.Estimateurs.estimateur import Estimateur
 import doctest
 
 

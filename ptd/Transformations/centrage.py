@@ -1,5 +1,6 @@
 from Transformations.transformation import Transformation
 
+
 class Centrage (Transformation) :
     def __init__ (self) :
         '''Centre une variable

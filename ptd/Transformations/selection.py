@@ -5,6 +5,7 @@ from ptd.table import Table
 from ptd.transformations.transformation import Transformation
 
 class Selection(Transformation):
+
     def __init__(self):
         '''Sélectionne certaines variables d'une base de données
         
