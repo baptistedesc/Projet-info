@@ -11,7 +11,6 @@ def transpose(l1):
     return l2
 
 
-
 class Table:
     '''
     >>> nom_colonnes=['fruits','légumes']
@@ -62,3 +61,4 @@ if __name__ == '__main__':
     valeurs=[[1,2],[3,4]]
     Objet=Table(nom_colonnes,valeurs)
     Table.exporter(Objet)
+

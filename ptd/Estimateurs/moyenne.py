@@ -1,33 +1,29 @@
-from ptd.estimateurs.estimateur import Estimateur
+from Estimateurs.estimateur import Estimateur
+import doctest
+
 
 class Moyenne(Estimateur):
     '''
     >>> [1,2,3]
     2
     '''
-    def __init__(self,variable) -> None:
-        #C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)
-        '''Calcule la moyenne d'une variable
-
-        Parameters
-        ----------
-        variable : list
-            La variable
+    def __init__(self) -> None:
+        pass
+        
+     
+    def execute(self,colonne, table):
         '''
-        self.variable=variable
-
-    def execute(self):
-        '''Calcule la moyenne 
-
-        Returns
-        -------
-        float
-            La moyenne demandée
-        ''' 
-        som=0
-        for i in self.variable:
-            som+=i
-        moyenne = som/len(self.variable)
+        >>> var1 = [2,2,2,5,5,5]
+        >>> m1 = Moyenne(var1)
+        >>> print(m1.execute())
+        3.05
+        '''       
+        indice = table.nom_colonnes.index(colonne)
+        moyenne = 0
+        somme = 0
+        for k in range(0,len(table.valeurs[indice])):
+            somme = table.valeurs[indice][k] +somme
+        moyenne=somme/(len(table.valeurs[indice]))
         return moyenne
 
 

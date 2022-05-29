@@ -1,28 +1,34 @@
-from ptd.table import Table
+from table import Table
+
 class Agregation_temp():
-    def __init__(self, table1, table2) :
-        """Concatène des bases de données contenant les mêmes colonnes
-        Utile notamment pour constituer une seule base de données à partir de plusieurs fichiers concernant le même sujet, mais découpés dans le temps (ex : les relevés météo par mois)
+
+    def __init__(self) :
+        pass
+
+    def execute(table1,table2):
+        '''Agrège les deux tables 
+
         Parameters
         ----------
-        table1 : Dataframe
-            Base de données 1
-        table2 : Dataframe
-            Base de données 2
-
-        Returns
-        -------
-        Dataframe
-
-        Examples
-        --------
-        >>> 
-        """
-        self.table1=table1
-        self.table2=table2
-        self.nv_donnees=[]
+        table1 : Table
+            1ème table
+        table2 : Table
+            2ème table
+        '''
+        nv_donnees=[]
         assert (table1.nom_colonnes==table2.nom_colonnes)
-        self.nom_colonnes=table1.nom_colonnes
-        self.nv_donnees= table1.variables + table2.variables
-        nv_table=Table(self.nom_colonnes,self.nv_donnees)
+        for i in range(len(table1.valeurs)):
+            for j in range(len(table2.valeurs[i])):
+                table1.valeurs[i].append(table2.valeurs[i][j])
+        nv_table=Table(table1.nom_colonnes,table1.valeurs)
         return nv_table
+
+
+if __name__ == '__main__':
+    nom_colonnes=['fruits','legumes']
+    valeurs1=[['pomme','poire'],['haricot','pois']]
+    valeurs2=[['fraise','framboise'],['poireau','tomate']]
+    table1=Table(nom_colonnes,valeurs1)
+    table2=Table(nom_colonnes,valeurs2)
+    table=Agregation_temp.execute(table1,table2)
+    Table.afficher(table)
