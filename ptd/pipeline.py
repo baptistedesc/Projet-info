@@ -10,28 +10,27 @@ from table import Table
 from importer import Importer
 from valeurs_manquantes import Valeurs_manquantes
 from operation import Operation
-from Transformations.transformation import Transformation
-from Transformations.centrage import Centrage
-from Transformations.reduction import Reduction
-from Transformations.jointure import Jointure
-from Estimateurs.moyenne import Moyenne
-from Estimateurs.variance import Variance
-from Estimateurs.sd import Sd
-from Graphiques.graphique import Graphique
-from Graphiques.boxplot import Boxplot
+from transformations.transformation import Transformation
+from transformations.centrage import Centrage
+from transformations.reduction import Reduction
+from transformations.jointure import Jointure
+from estimateurs.moyenne import Moyenne
+from estimateurs.variance import Variance
+from estimateurs.sd import Sd
+from graphiques.graphique import Graphique
+from graphiques.boxplot import Boxplot
 
 
 
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_electricite/'
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
     filename = '2013-01.json.gz' 
-    beta=Importer(filename,folder)
-    electricite=Importer.lire(beta)
-    # table.Table.afficher(alpha)
+    alpha=Importer(filename,folder)
+    electricite=Importer.lire(alpha)
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_meteo/'
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
     filename = 'synop.201301.csv.gz'
     beta=Importer(filename,folder)
     meteo=Importer.lire(beta)
@@ -39,12 +38,35 @@ if __name__ == '__main__':
 #Question 1 : Y'a t-il une relation entre température et consommation d'énérgie ?
 #Faire un inner-join pour que la statiscticien puisse accéder à toutes les variables simultanément.
 
+# table=Jointure.execute(electricite,cle1,meteo,cle2,type)
+
+Table.afficher_n(electricite,2)
+Table.afficher_n(meteo,2)
+
+#On créé une nouvelle table "table" dans laquelle nous réalisons une jointure entre les deux tables.
+#Comme clés de la jointure, il faut prendre le doublet (date, région).
+#Pour la table météo, nous ne disposons des données qu'au niveau des stations donc il faut faire une agrégation spatiale
+#au niveau régional. Ensuite, il faut réaliser la jointure entre les deux tables puis ne conserver que les 
+#colonnes [région, date, température, consommation d'électricité] avec la méthode sélection.
+
 #Le vent joue-t-il un rôle dans cette consommation?
+
+#On fait la même jointure dans une nouvelle table mais nous conservons cette fois-ci également les variables qui traitent du vent
+#Comme direction du vent moyen 10mn ou vitesse du vent moyen 10mn
+
 #Centré et réduire?
 
-print(meteo.resume())
+# print(meteo.resume())
 
-#Peut-on observer des tendances à long terme pour la consommationé lectrique régionale ou nationale?
+#Peut-on observer des tendances à long terme pour la consommation électrique régionale ou nationale?
+
+folder ='//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+filename ='2013-01.json.gz' 
+alpha=Importer(filename,folder)
+electricite=Importer.lire(alpha)
+
+
+
 #Utilisations de la classe agrégation spatiale pour changer de granularité.
 #Création de deucx nouveaux jeux de donnée: Le premier aura des données à l'échelle nationnale et le second sera à l'échelle régionale.
 
