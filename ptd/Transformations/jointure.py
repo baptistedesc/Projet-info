@@ -75,28 +75,24 @@ class Jointure(Transformation):
             return Jointure.execute(table2,cle2,table1,cle1,'left')
 
         elif type=='inner':
-            variables=[cle1,cle2]
-            # i=table2.nom_colonnes.index(cle2)
-            # table2.nom_colonnes[i]=cle1
-            # Transposition des deux tables en vue du parcours des observations
-            indexs1 = [table1.nom_colonnes.index(variable) for variable in variables]
-            indexs2 = [table2.nom_colonnes.index(variable) for variable in variables]
+            # Transposition
+            indice1 = [table1.nom_colonnes.index(cle1)]
+            indice2 = [table2.nom_colonnes.index(cle2)]
             lignes_table1 = transpose(table1.valeurs)
             lignes_table2 = transpose(table2.valeurs)
 
-            # Preparation de la nouvelle table a remplir
-            nouvelles_variables = table1.nom_colonnes + enlever_individus(table2.nom_colonnes, indexs2)
-            nouvelles_lignes = []
+            # Nlle table
+            nv_variables = table1.nom_colonnes + enlever_individus(table2.nom_colonnes, indice2)
+            nv_lignes = []
 
-            # Parcours des individus des deux tables
+            # Remplissage de la table
             for ligne1 in lignes_table1:
                 for ligne2 in lignes_table2:
-                    if [ligne1[indexs1[i]] == ligne2[indexs2[i]] for i in range(len(indexs1))] == [True] * len(indexs1):
-                        nouvelles_lignes.append(ligne1 + enlever_individus(ligne2, indexs2))
+                    if [ligne1[indice1[i]] == ligne2[indice2[i]] for i in range(len(indice1))] == [True] * len(indice1):
+                        nv_lignes.append(ligne1 + enlever_individus(ligne2, indice2))
         
-            # Renvoi de la table finale
-            nouvelles_donnees = transpose(nouvelles_lignes)
-            return Table(nouvelles_variables, nouvelles_donnees)
+            nv_valeurs = transpose(nv_lignes)
+            return Table(nv_variables, nv_valeurs)
 
          
             
