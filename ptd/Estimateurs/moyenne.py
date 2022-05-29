@@ -17,9 +17,7 @@ class Moyenne(Estimateur):
         >>> m1 = Moyenne(var1)
         >>> print(m1.execute())
         3.05
-        '''
-   
-               
+        '''       
         indice = table.nom_colonnes.index(colonne)
         moyenne = 0
         somme = 0

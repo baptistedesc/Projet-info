@@ -1,5 +1,4 @@
 from ptd.transformations.transformation import Transformation
-from ptd.transformations.selection import Selection
 from ptd.table import Table
 
 class Moyenne_Glissante (Transformation) :
@@ -21,27 +20,25 @@ class Moyenne_Glissante (Transformation) :
 
     Examples
     --------
-    >>> liste=Moyenne_Glissante([2, 3, 5, 7, 11, 13, 17])
-    >>> Moyenne_Glissante.execute(liste,3)
-    [3.3333333333333335, 5.0, 7.666666666666666, 10.333333333333332, 13.666666666666664]
     '''
         k=table.nom_colonnes.index(variable)
-        data=table.valeurs[k]
+        données=table.valeurs[k]
         assert type(table.valeurs[0])!=str
-        moyenne_glissante=[]
-        for i in range(len(data)-taille_intervalle):
-            for j in range(i,i+taille_intervalle):
-                moyenne_glissante[i]=(moyenne_glissante[i]+data[i+j])/taille_intervalle
-        table.append(moyenne_glissante)
+        moyenne_glissante=[0]*(len(table.valeurs[k])-taille_intervalle+1)
+        for i in range(len(moyenne_glissante)):
+            for j in range(taille_intervalle):
+                moyenne_glissante[i]=moyenne_glissante[i]+données[i+j]/taille_intervalle
+        table.valeurs.append(moyenne_glissante)
         return table
 
 if __name__ == '__main__':
     import doctest
     doctest.testmod(verbose=True)
     colonnes=['fruits','legumes','age']
-    valeurs=[['kiwi','poire','abricot'],['haricot','pois','mq'],[1,2,3]]
+    valeurs=[['kiwi','poire','abricot','abricot','abricot'],['haricot','pois','mq','abricot','abricot'],[2,4,6,8,10]]
     table=Table(colonnes,valeurs)
-    table.afficher(Moyenne_Glissante.execute(table,'age',2))
+    alpha=Moyenne_Glissante.execute(table,'age',2)
+    Table.afficher(alpha)
 
                 
         
