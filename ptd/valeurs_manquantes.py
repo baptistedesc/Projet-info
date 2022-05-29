@@ -1,4 +1,4 @@
-from ptd.table import Table
+from table import Table
 
 class Valeurs_manquantes():
     def __init__(self) -> None:
@@ -6,7 +6,7 @@ class Valeurs_manquantes():
     
 
 
-    def execute(colonne, table, methode): #Modifie la table
+    def execute(self, colonne, table, methode): #Modifie la table
         indice = table.nom_colonnes.index(colonne)
 
         if methode == 'mean':
@@ -29,5 +29,6 @@ if __name__ == '__main__':
     nom_colonnes=['fruits','legumes']
     valeurs=[['pomme','poire','pomme','poire'],[8,'mq',8,8]]
     table=Table(nom_colonnes,valeurs)
-    alpha=Valeurs_manquantes.execute('legumes',table,'mean')
+    v1 = Valeurs_manquantes()
+    alpha=v1.execute('legumes',table,'mean')
     Table.afficher(alpha)
