@@ -43,17 +43,30 @@ if __name__ == '__main__':
 Table.afficher_n(electricite,2)
 Table.afficher_n(meteo,2)
 
-#On doit faire une jointure entre les deux tables. Comme clé, il faut prendre le doublet (date, région) comme clé.
+#On créé une nouvelle table "table" dans laquelle nous réalisons une jointure entre les deux tables.
+#Comme clés de la jointure, il faut prendre le doublet (date, région).
 #Pour la table météo, nous ne disposons des données qu'au niveau des stations donc il faut faire une agrégation spatiale
 #au niveau régional. Ensuite, il faut réaliser la jointure entre les deux tables puis ne conserver que les 
-#colonnes [région, date, température, consommation d'électricité] avec la méthode sélection
+#colonnes [région, date, température, consommation d'électricité] avec la méthode sélection.
 
 #Le vent joue-t-il un rôle dans cette consommation?
+
+#On fait la même jointure dans une nouvelle table mais nous conservons cette fois-ci également les variables qui traitent du vent
+#Comme direction du vent moyen 10mn ou vitesse du vent moyen 10mn
+
 #Centré et réduire?
 
 # print(meteo.resume())
 
-#Peut-on observer des tendances à long terme pour la consommationé lectrique régionale ou nationale?
+#Peut-on observer des tendances à long terme pour la consommation électrique régionale ou nationale?
+
+folder ='//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+filename ='2013-01.json.gz' 
+alpha=Importer(filename,folder)
+electricite=Importer.lire(alpha)
+
+
+
 #Utilisations de la classe agrégation spatiale pour changer de granularité.
 #Création de deucx nouveaux jeux de donnée: Le premier aura des données à l'échelle nationnale et le second sera à l'échelle régionale.
 
