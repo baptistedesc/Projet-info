@@ -1,6 +1,40 @@
 from ptd.transformations.transformation import Transformation
 from ptd.table import Table
 
+def transpose(l1):
+    l2=[]
+    for i in range(len(l1[0])):
+        row =[]
+        for item in l1:
+            row.append(item[i])
+        l2.append(row)
+    return l2
+
+def enlever_individus(liste, indexs):
+            '''Supprime d'une liste les individus d'indexs spécifiés
+
+            Parameters
+            ----------
+            liste: list
+                Liste de listes a transposer
+            
+            Returns
+            -------
+            list
+                Liste sans les individus d'indexs spécifiés
+            
+            Examples
+            --------
+            >>> maliste = [1, 2, 3, 4]
+            >>> enlever_individus(maliste, 0)
+            [2, 3, 4]
+            '''
+
+            resultat = []
+            for i in range(len(liste)):
+                if not i in indexs:
+                    resultat.append(liste[i])
+            return resultat
 
 class Jointure(Transformation):
     def __init__(self) :
@@ -36,31 +70,33 @@ class Jointure(Transformation):
                         for z in range(n,n+len(table2.valeurs)):
                             table1.valeurs[z][k]=table2.valeurs[z-len(table1.valeurs)][p] 
             return table1
+
         elif type=='right':
             return Jointure.execute(table2,cle2,table1,cle1,'left')
-        elif type=='inner':
-            temporaire=[]
-            i,j=table1.nom_colonnes.index(cle1),table2.nom_colonnes.index(cle2)
-            temporaire=table2.valeurs[j]
-            del table2.nom_colonnes[j]
-            del table2.valeurs[j]
-            n=len(table1.valeurs)
-            table1.nom_colonnes=table1.nom_colonnes+table2.nom_colonnes
-            for u in range(len(table1.valeurs)-1):
-                table1.valeurs.append(['mq']*(len(table2.valeurs[j])))
-            for k in range(len(table1.valeurs[i])):
-                for p in range(len(temporaire)):
-                    if table1.valeurs[i][k]==temporaire[p]:
-                        for z in range(n,n+len(table2.valeurs)):
-                            table1.valeurs[z][k]=table2.valeurs[z-len(table1.valeurs)][p]
-            for x in range(len(table1.valeurs[i])):
-                if table1.valeurs[i][x] not in table2.valeurs[j]:
-                    for y in range(0,len(table1.valeurs)):
-                        del table1.valeurs[y][x]
-            return table1
-            
-                
 
+        elif type=='inner':
+            variables=[cle1,cle2]
+            # Transposition des deux tables en vue du parcours des observations
+            indexs1 = [table1.nom_colonnes.index(variable) for variable in variables]
+            indexs2 = [table2.nom_colonnes.index(variable) for variable in variables]
+            lignes_table1 = transpose(table1.valeurs)
+            lignes_table2 = transpose(table2.valeurs)
+
+            # Preparation de la nouvelle table a remplir
+            nouvelles_variables = table1.nom_colonnes + enlever_individus(table2.nom_colonnes, indexs2)
+            nouvelles_lignes = []
+
+            # Parcours des individus des deux tables
+            for ligne1 in lignes_table1:
+                for ligne2 in lignes_table2:
+                    if [ligne1[indexs1[i]] == ligne2[indexs2[i]] for i in range(len(indexs1))] == [True] * len(indexs1):
+                        nouvelles_lignes.append(ligne1 + enlever_individus(ligne2, indexs2))
+        
+            # Renvoi de la table finale
+            nouvelles_donnees = transpose(nouvelles_lignes)
+            return Table(nouvelles_variables, nouvelles_donnees)
+
+         
             
 
 

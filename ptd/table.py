@@ -61,4 +61,3 @@ if __name__ == '__main__':
     valeurs=[[1,2],[3,4]]
     Objet=Table(nom_colonnes,valeurs)
     Table.exporter(Objet)
-
