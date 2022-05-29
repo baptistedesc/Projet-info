@@ -5,3 +5,5 @@ class Graphique(Operation,ABC):
     @abstractmethod
     def execute():
         pass
+
+

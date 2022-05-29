@@ -18,14 +18,15 @@ class Somme(Estimateur):
         >>> nom=["var1"]
         >>> m1 = Somme()
         >>> Ex=Table(nom,var1)
-        >>> print(m1.execute(var1,Ex))
+        >>> print(Ex)
+        >>> 
         21
         '''       
         indice = table.nom_colonnes.index(colonne)
         somme = 0
         for k in range(0,len(table.valeurs[indice])):
             somme = table.valeurs[indice][k] +somme
-        return somme
+        return somme 
 
 
 if __name__ == '__main__':
@@ -33,7 +34,8 @@ if __name__ == '__main__':
     nom=["var1"]
     m1 = Somme()
     Ex=Table(nom,var1)
-    print(m1.execute(var1,Ex))
+    print(Ex)
+    
     import doctest
     doctest.testmod()
 

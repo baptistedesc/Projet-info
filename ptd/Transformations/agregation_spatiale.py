@@ -1,6 +1,7 @@
 from transformation import Transformation
 from ptd.table import Table
 from ptd.estimateurs.moyenne import Moyenne
+from ptd.estimateurs.somme import Somme
 
 class Agregation(Transformation):
       def __init__(self,nom_var_agrege,indication_type_var):
@@ -11,10 +12,12 @@ class Agregation(Transformation):
           self.indication_type_var=indication_type_var
 # indication_type_var est une liste de plusieurs indication comme ça : 
 # ["nom_var","type_var","parametre_type_var"] 
-
+#type_var = 'quant_int" pour une variable intensive (on veut la moyenne quand on agrege)
+#type_var = 'quant_ext" pour une variable extensive (on veut la somme quand on agrege)
     
       def execute(self,table):
             m1=Moyenne()
+            s1=Somme()
             #Récupération des indices des variables
             indice_agrege = table.nom_colonnes.index(self.nom_var_agrege)
             #Opération préliminaire : comptage du nombre de valeurs distincts de la variable 
@@ -37,8 +40,9 @@ class Agregation(Transformation):
                                     ligne.append(table.valeurs[x])
                         #En fonction du type de la variable, différente agrégation
                         if self.indication_type_var[k][1]=="quant_int": #on fait la moyenne 
-                              donnees_finales[n][k]=m1.execute(table.nom_colonnes[indice_agrege],table)
-                       #manque var de types extensive (on fait la somme) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                              donnees_finales[n][k]=m1.execute(table,self.indication_type_var[k][0])
+                        if self.indication_type_var[k][1]=="quant_ext": #on fait la somme
+                              donnees_finales[n][k]=m1.execute(table,self.indication_type_var[k][0])
             #On ajoute la variable d'agrégation à la fin
             for indice in range(len(donnees_finales)):
                   donnees_finales[indice].insert(0,l[indice])
@@ -54,4 +58,4 @@ agregation=Agregation("poids",[["euro","quant_int"],["temperature","quant_int",N
 # et temperature comme variable quantitative intensive et sans variable de pondération
 test_agregation=agregation.execute(test)
 print(test_agregation)
-res=[[500,50,300],[1000,50,300]]
+result=[[500,50,300],[1000,50,300]]
