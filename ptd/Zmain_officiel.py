@@ -14,14 +14,14 @@ from table import Table
 from importer import Importer
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_electricite/'
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
     filename = '2013-01.json.gz' 
     beta=Importer(filename,folder)
     alpha=Importer.lire(beta)
     # table.Table.afficher(alpha)
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1953/Projet-info/donnees_meteo/'
+    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
     filename = 'synop.201301.csv.gz'
     beta=Importer(filename,folder)
     electricite=Importer.lire(beta)
