@@ -1,4 +1,4 @@
-#Ce fichier est concut pour la SOUTENANCE de projet traitement de donnée
+#Ce fichier est conçu pour la SOUTENANCE de projet traitement de donnée
 #Elle nous servira à faire une démonstration de notre code.
 #Pour ce test, nous avons choisie de prend la variable de type float rafper. EXPLIQUER CE QU EST CETTE VARIABLE
 

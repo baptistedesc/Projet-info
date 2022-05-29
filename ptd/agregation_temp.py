@@ -3,11 +3,18 @@ from table import Table
 class Agregation_temp():
 
     def __init__(self) :
-        '''
-    truc
-    '''
+        pass
 
     def execute(table1,table2):
+        '''Agrège les deux tables 
+
+        Parameters
+        ----------
+        table1 : Table
+            1ème table
+        table2 : Table
+            2ème table
+        '''
         nv_donnees=[]
         assert (table1.nom_colonnes==table2.nom_colonnes)
         for i in range(len(table1.valeurs)):

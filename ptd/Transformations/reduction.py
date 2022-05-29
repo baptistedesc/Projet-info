@@ -1,18 +1,11 @@
 from Transformations.transformation import Transformation
 from cmath import sqrt
 from statistics import variance
+from table import Table
 
 class Reduction(Transformation):
     def __init__(self) -> None:
-        '''Reduit certaines variables d'une base de données 
-
-        Parameters
-        ----------
-        
-        '''
-    
-        #self.nom_colonnes.index('population')
-
+        pass
 
     def execute(self, colonne, table) :
         

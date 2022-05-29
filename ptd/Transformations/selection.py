@@ -7,15 +7,7 @@ from ptd.transformations.transformation import Transformation
 class Selection(Transformation):
 
     def __init__(self):
-        '''Sélectionne certaines variables d'une base de données
-        
-        Renvoie une nouvelle basse de données contenant seulement ces variables
-
-        Parameters
-        ----------
-        dataframe : table
-            La base de données
-        '''
+        pass
     
 
     def execute(self,colonnes,table):
