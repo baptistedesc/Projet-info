@@ -3,6 +3,10 @@ from ptd.table import Table
 from ptd.estimateurs.moyenne import Moyenne
 from ptd.estimateurs.somme import Somme
 
+################################################################
+#pas fonctionnel : les lignes 43 et 45 ne vont pas, on n'a pas réussit à moyenniser et sommer les variables
+#######################################
+
 class Agregation(Transformation):
       def __init__(self,nom_var_agrege,indication_type_var):
           #Cette classe permet d'agréger selon n'importe quelle variable. Pour une agrégation spatiale, 
