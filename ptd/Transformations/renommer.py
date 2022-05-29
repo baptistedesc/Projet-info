@@ -4,13 +4,7 @@ from ptd.transformations.transformation import Transformation
 
 class Renommer(Transformation):
     def __init__(self):
-        '''Renomme une variable
-
-        Parameters
-        ----------
-        Table : table
-            La base de données
-        '''
+        pass
 
     def execute(table,variable_avant,variable_apres):
         i=table.nom_colonnes.index(variable_avant)

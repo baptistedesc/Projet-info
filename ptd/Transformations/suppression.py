@@ -4,13 +4,7 @@ from ptd.transformations.transformation import Transformation
 
 class Suppression(Transformation):
     def __init__(self):
-        '''Supprime une variable
-
-        Parameters
-        ----------
-        Table : table
-            La base de données
-        '''
+        pass
 
     def execute(table,variable):
         assert variable in table.nom_colonnes

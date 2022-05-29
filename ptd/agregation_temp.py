@@ -3,9 +3,7 @@ from ptd.table import Table
 class Agregation_temp():
 
     def __init__(self) :
-        '''
-    truc
-    '''
+        pass
 
     def execute(table1,table2):
         nv_donnees=[]
