@@ -5,68 +5,47 @@ from ptd.table import Table
 from ptd.transformations.transformation import Transformation
 
 class Selection(Transformation):
-    def __init__(self):
-        '''Sélectionne certaines variables d'une base de données
-        
-        Renvoie une nouvelle basse de données contenant seulement ces variables
 
-        Parameters
-        ----------
-        dataframe : table
-            La base de données
-        '''
-<<<<<<< HEAD
+    def __init__(self):
+        pass
     
 
-    def execute(self,colonnes,table):
-=======
-
-    def execute(self,table,variable):
-        
->>>>>>> e774166cca24f91122be2d25ea4bf2e8a1df8ab8
+    def execute(table,variables):
         '''Sélectionne la variable demandée 
 
         Parameters
         ----------
-<<<<<<< HEAD
-        colonnes : liste
-            Les noms des variables à selectionner
+        variables : liste
+            Liste des variables sélectionnées
         table : Table
-            La table contenant les variables
-
-        Returns
-        -------
-        list
-            Les variables demandées.
-     ''' 
-        selection = []
-        for i in range(0,len(colonnes)):
-            indice = table.nom_colonnes.index(colonnes[i])
-            selection.append(table.valeurs[indice])
-        return selection
-     
-=======
-        variable : str
-            Le nom de la variable à selectionner
-        dataframe : table
             La base de données
 
         Returns
         -------
-        table
-            La variable demandée
+        liste_index
+            liste des indices des variables recherchées
         ''' 
-        #Pas sûr d'avoir complètement capté comment ça marche donc à vérifier. En fait comme c'est codé selection ça sert juste à prendre une variable à part pour après faire 
-        # des opérations dessus, mais je pense qu'il faudrait qu'on ait aussi un truc pour selectionner plusieurs variables et réduire la base de données à ça (un peu comme fenêtrage fait
-        # une sélection sur les lignes, faire une sélection sur les colonnes mais qui modifie le dataframe)
-        #On créé la liste des variables
-        for i in range(len(table.nom_colonnes)):
-            assert variable in table.nom_colonnes
-        for i in range(len(table.nom_colonnes)) :
-            if table.nom_colonnes[i]==variable:
-                return Table(table.nom_colonnes[i],table.valeurs[i])
+        for i in range(len(variables)):
+            assert variables[i] in table.nom_colonnes
+        for j in range(len(table.nom_colonnes)):
+            if table.nom_colonnes[j] not in variables:
+                del table.nom_colonnes[j]
+                del table.valeurs[j]
+        return table
 
-#tu penses ca marche ca ?
-        indice=table.nom_colonnes.index(variable)
-        return Table(table.nom_colonnes[indice],table.valeurs[indice])
->>>>>>> e774166cca24f91122be2d25ea4bf2e8a1df8ab8
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
+    colonnes=['fruits','legumes','sante']
+    valeurs=[['kiwi','poire','abricot'],['haricot','pois','mq'],['bien','pas bien','moyen']]
+    table1=Table(nom_colonnes=colonnes,valeurs=valeurs)
+    variables1=['fruits','legumes']
+    variables2=['fruits']
+    alpha=Selection.execute(table1,variables1)
+    Table.afficher(alpha)
+    beta=Selection.execute(table1,variables2)
+    Table.afficher(beta)
+
+
+
+

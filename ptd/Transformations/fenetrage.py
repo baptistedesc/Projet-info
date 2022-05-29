@@ -29,11 +29,5 @@ class Fenetrage(Transformation):
             La base de données initiale, mais réduite à la période demandée
         ''' 
 # Il y a un problème à régler avec les dates
-        date=Selection.execute(date)
-        for i in range (1,len(date)):
-            if date1>date[i] or date2<date[i]:
-                for j in range len(self.table):
-                    del self.table[j][i]
-        return self.table
 
 
