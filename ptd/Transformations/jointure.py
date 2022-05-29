@@ -1,5 +1,5 @@
-from ptd.transformation import Transformation
-from table import Table
+from ptd.transformations.transformation import Transformation
+from ptd.table import Table
 
 def transpose(l1):
     l2=[]
