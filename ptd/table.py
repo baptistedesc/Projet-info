@@ -12,14 +12,7 @@ def transpose(l1):
 
 
 class Table:
-    '''
-    >>> nom_colonnes=['fruits','légumes']
-    >>> variables=[[1,2],[3,4]]
-    >>> alpha=Table(nom_colonnes,variables)
-    >>> Table.resume(alpha)
-    Il y a 0 variables str et 2 variables numériques soit 2 variables.
-    [['fruits', <class 'int'>], ['légumes', <class 'int'>]]
-    ''' 
+
     def __init__(self,nom_colonnes,valeurs):
         self.nom_colonnes=nom_colonnes
         self.valeurs=valeurs
@@ -34,13 +27,20 @@ class Table:
             resume.append([])
         for i in range(n):
             resume[i].append(self.nom_colonnes[i])
-            resume[i].append(type(self.valeurs[i][0]))
+            j=0
+            while j<len(self.valeurs[i]):
+                if self.valeurs[i][j]!='mq':
+                    resume[i].append(type(self.valeurs[i][j]))
+                    break
+                else: 
+                    j=j+1
         s=0
         f=0
         for i in range(n):
                 if resume[i][1] is str:
                     s=s+1
-                f=f+1
+                else:
+                    f=f+1
         print('Il y a ' + str(s) + ' variables str et ' + str(f) + ' variables numériques soit ' + str(s+f) +' variables.')
         return resume
 
@@ -55,10 +55,12 @@ class Table:
 
 
 if __name__ == '__main__':
-    import doctest
-    doctest.testmod(verbose=True)
     nom_colonnes=['fruits','légumes']
     valeurs=[[1,2],[3,4]]
     Objet=Table(nom_colonnes,valeurs)
     Table.exporter(Objet)
+    nom_colonnes0=['fruits','légumes','age','route']
+    valeurs0=[['mq','mq',1,2,4,5],[3,4,'mq','mq',8,17],['8 ans','12 ans','12 ans','12 ans','12 ans','12 ans'],['du bois','de la rivière','12 ans','12 ans','12 ans','12 ans']]
+    alpha0=Table(nom_colonnes0,valeurs0)
+    Table.resume(alpha0)
 

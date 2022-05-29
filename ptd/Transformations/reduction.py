@@ -1,7 +1,7 @@
-from Transformations.transformation import Transformation
+from ptd.transformations.transformation import Transformation
 from cmath import sqrt
 from statistics import variance
-from table import Table
+from ptd.table import Table
 
 class Reduction(Transformation):
     def __init__(self) -> None:
