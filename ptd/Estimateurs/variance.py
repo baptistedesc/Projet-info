@@ -1,4 +1,4 @@
-from Estimateurs.estimateur import Estimateur
+from ptd.estimateurs.estimateur import Estimateur
 
 
 class Variance(Estimateur):

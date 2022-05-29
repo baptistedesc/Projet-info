@@ -49,8 +49,9 @@ class Agregation(Transformation):
 nom_colonnes=["poids","euro","temperature"]
 valeurs = [[500,10,200],[500,40,400],[1000,10,200],[1000,40,400]]
 test=Table(nom_colonnes,valeurs)
-agregation=Agregation("poids",[["euro","quant_ext"],["temperature","quant_int",None]])
+agregation=Agregation("poids",[["euro","quant_int"],["temperature","quant_int",None]])
 #l'agregation se fait sur le poids et on a bien définit euro comme variable quantitative extensive 
 # et temperature comme variable quantitative intensive et sans variable de pondération
 test_agregation=agregation.execute(test)
+print(test_agregation)
 res=[[500,50,300],[1000,50,300]]

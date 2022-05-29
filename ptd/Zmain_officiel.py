@@ -10,18 +10,26 @@
 from statistics import variance
 
 from matplotlib.pyplot import boxplot
-from table import Table
+from ptd.table import Table
 from importer import Importer
 
 if __name__ == '__main__':
+<<<<<<< HEAD
+    folder = '//filer-eleves.domensai.ecole/id2060/Projet-info/donnees_electricite/'
+=======
     folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+>>>>>>> a1538f13df63143b5c3d72638e9451475ba3c29b
     filename = '2013-01.json.gz' 
     beta=Importer(filename,folder)
     alpha=Importer.lire(beta)
     # table.Table.afficher(alpha)
 
 if __name__ == '__main__':
+<<<<<<< HEAD
+    folder = '//filer-eleves.domensai.ecole/id2060/Projet-info/donnees_meteo/'
+=======
     folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
+>>>>>>> a1538f13df63143b5c3d72638e9451475ba3c29b
     filename = 'synop.201301.csv.gz'
     beta=Importer(filename,folder)
     electricite=Importer.lire(beta)
@@ -58,10 +66,10 @@ for k in range(55,65):
 #TEST des classes TRANSFORMATIONS
 
 from operation import Operation
-from Transformations.transformation import Transformation
+from ptd.transformations.transformation import Transformation
 # from Transformations.selection import Selection
-from Transformations.centrage import Centrage
-from Transformations.reduction import Reduction
+from ptd.transformations.centrage import Centrage
+from ptd.transformations.reduction import Reduction
 
 
 #Test des CLASSES CENTRAGE & REDUCTION
@@ -92,9 +100,9 @@ for k in range(55,65): #Cette séquence de valeur contient des valeurs manquante
 #//////////////////////////////////////////////////////////////////////////////////////////////////
 #TEST des classes ESTIMATEURS
 #//////////////////////////////////////////////////////////////////////////////////////////////////
-from Estimateurs.moyenne import Moyenne
-from Estimateurs.variance import Variance
-from Estimateurs.sd import Sd
+from estimateurs.moyenne import Moyenne
+from estimateurs.variance import Variance
+from estimateurs.sd import Sd
 
 #On change de variable, prenons : 
 
@@ -132,14 +140,14 @@ print(sd1.execute('phenspe1', electricite))
 
 
 #Test des classes GRAPHIQUES : 
-from Graphiques.graphique import Graphique
-from Graphiques.boxplot import Boxplot
+from graphiques.graphique import Graphique
+from graphiques.boxplot import Boxplot
 
 b1 = Boxplot()
 print(b1.execute(['phenspe2','phenspe1','rafper','dd','pres','vv'], elec_sans_mq))#AVANT de pouvoir utiliser BOXPLOT, il faut que la variable soit SANS VALEURS MANQUANTES.
 
 
-from Graphiques.nuagedepoints import Nuagedepoints
+from graphiques.nuagedepoints import Nuagedepoints
 
 nu1 = Nuagedepoints()
 print(nu1.execute('vv','phenspe1',elec_sans_mq))
