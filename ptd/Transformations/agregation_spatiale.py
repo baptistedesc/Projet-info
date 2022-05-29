@@ -14,13 +14,14 @@ class Agregation(Transformation):
 
     
       def execute(self,table):
+            m1=Moyenne()
             #Récupération des indices des variables
             indice_agrege = table.nom_colonnes.index(self.nom_var_agrege)
             #Opération préliminaire : comptage du nombre de valeurs distincts de la variable 
             # qui va être agregee ainsi que des valeurs
             count = 0  
             l=[]
-            for k in range(len(table.valeurs)):
+            for k in range(len(table.valeurs[indice_agrege])):
                   if table.valeurs[k][indice_agrege] not in l :  
                         count += 1
                         l.append(table.valeurs[k][indice_agrege])
@@ -31,12 +32,12 @@ class Agregation(Transformation):
             for k in range(len(self.indication_type_var)):
                   for n in range(count):
                         ligne=[]
-                        for x in range(len(table.valeurs)):
+                        for x in range(len(table.valeurs[indice_agrege])):
                               if table.valeurs[x][indice_agrege]==l[n]:
                                     ligne.append(table.valeurs[x])
                         #En fonction du type de la variable, différente agrégation
                         if self.indication_type_var[k][1]=="quant_int": #on fait la moyenne 
-                              donnees_finales[n][k]=Moyenne.execute(Table(table.nom_colonnes,ligne),self.indication_type_var[k][0],self.indication_type_var[k][2])
+                              donnees_finales[n][k]=m1.execute(table.nom_colonnes[indice_agrege],table)
                        #manque var de types extensive (on fait la somme) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             #On ajoute la variable d'agrégation à la fin
             for indice in range(len(donnees_finales)):
