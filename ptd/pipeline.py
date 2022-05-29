@@ -24,13 +24,13 @@ from graphiques.boxplot import Boxplot
 
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_electricite/'
+    folder = '//filer-eleves.domensai.ecole/id2060/Projet-info/donnees_electricite/'
     filename = '2013-01.json.gz' 
     alpha=Importer(filename,folder)
     electricite=Importer.lire(alpha)
 
 if __name__ == '__main__':
-    folder = '//filer-eleves.domensai.ecole/id1977/Projet-info/donnees_meteo/'
+    folder = '//filer-eleves.domensai.ecole/id2060/Projet-info/donnees_meteo/'
     filename = 'synop.201301.csv.gz'
     beta=Importer(filename,folder)
     meteo=Importer.lire(beta)
