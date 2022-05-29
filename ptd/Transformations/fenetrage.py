@@ -1,5 +1,5 @@
-from ptd.transformations.transformation import Transformation
-from ptd.transformations.selection import Selection
+from transformations.transformation import Transformation
+from transformations.selection import Selection
 
 class Fenetrage(Transformation):
 #On créé la liste des variables

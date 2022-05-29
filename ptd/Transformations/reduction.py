@@ -1,4 +1,4 @@
-from ptd.Transformations.transformation import Transformation
+from Transformations.transformation import Transformation
 from cmath import sqrt
 from statistics import variance
 

@@ -7,6 +7,9 @@
 #IMPORTATION des données
 
 
+from statistics import variance
+
+from matplotlib.pyplot import boxplot
 from table import Table
 from importer import Importer
 
@@ -90,6 +93,8 @@ for k in range(55,65): #Cette séquence de valeur contient des valeurs manquante
 #TEST des classes ESTIMATEURS
 #//////////////////////////////////////////////////////////////////////////////////////////////////
 from Estimateurs.moyenne import Moyenne
+from Estimateurs.variance import Variance
+from Estimateurs.sd import Sd
 
 #On change de variable, prenons : 
 
@@ -100,8 +105,41 @@ print("Test des classes Moyenne, Variance, Ecart-type")
 indice = electricite.nom_colonnes.index('phenspe1')
 #traitement des données manquantes :
 elec_sans_mq = Val_manquante1.execute("phenspe1", electricite,'mean')
+elec_sans_mq = Val_manquante1.execute("phenspe2", electricite,'mean')
+elec_sans_mq = Val_manquante1.execute("dd", electricite,'mean')
+elec_sans_mq = Val_manquante1.execute("pres", electricite,'mean')
+elec_sans_mq = Val_manquante1.execute("vv", electricite,'mean')
+
+
 
 for k in range(55,65): #Cette séquence de valeur contient des valeurs manquantes : démonstration
     print(elec_sans_mq_rafper_centre_reduit.valeurs[indice][k])
 print("La moyenn est:")
 print(m1.execute('phenspe1',elec_sans_mq))
+
+
+v1 = Variance()
+print('La variance est:')
+print(v1.execute('phenspe1', electricite))
+
+sd1 = Sd()
+print('L ecart type est:')
+print(sd1.execute('phenspe1', electricite))
+
+
+
+
+
+
+#Test des classes GRAPHIQUES : 
+from Graphiques.graphique import Graphique
+from Graphiques.boxplot import Boxplot
+
+b1 = Boxplot()
+print(b1.execute(['phenspe2','phenspe1','rafper','dd','pres','vv'], elec_sans_mq))#AVANT de pouvoir utiliser BOXPLOT, il faut que la variable soit SANS VALEURS MANQUANTES.
+
+
+from Graphiques.nuagedepoints import Nuagedepoints
+
+nu1 = Nuagedepoints()
+print(nu1.execute('vv','phenspe1',elec_sans_mq))

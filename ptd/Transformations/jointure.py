@@ -1,5 +1,5 @@
-from ptd.transformations.transformation import Transformation
-from ptd.table import Table
+from Transformations.transformation import Transformation
+from table import Table
 
 
 class Jointure(Transformation):

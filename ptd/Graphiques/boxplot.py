@@ -1,3 +1,4 @@
+from venv import create
 from Graphiques.graphique import Graphique
 import matplotlib.pyplot as plt 
 
@@ -7,9 +8,9 @@ class Boxplot(Graphique):
 
     
         '''     
-    
 
-    def execute(self, tableau):
+
+    def execute(self, colonnes, table):
         '''Affiche le boxplot
 
         Parameters
@@ -28,18 +29,20 @@ class Boxplot(Graphique):
         nouveau_tableau = []
         row = 0
         col = 0
-        for i in range(0,len(tableau)):
-            row = row+1
-            for j in range(1,len(tableau[i])):
-                nouveau_tableau.append(tableau[i][j])
-                col = col+1
+        def createList(name):#Permet d'avoir le nom des colonnes comme nom des clés d'un dictionnaire
+            result = {}
+            for i in range(len(name)):
+               nameList = name[i]
+               result[nameList] = []
+            return result
+        dico = createList(colonnes)
+
+        for i in range(0,len(colonnes)):#Permet de remplir le dictionnaire avec les valeurs de chaques colonnes
+            indice = table.nom_colonnes.index(colonnes[i])
+            dico[colonnes [i]] = table.valeurs[indice]
+
         
-        print(col,row)
-        row = int(row)
-        col = int(col/row)
-        NewList = [nouveau_tableau[col*i : col*(i+1)] for i in range(row)]
-        print(NewList)
-        plt.boxplot(NewList)
+        plt.boxplot([dico[x] for x in dico.keys()], labels = dico.keys())
         plt.show()
 
         

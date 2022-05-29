@@ -1,4 +1,4 @@
-from ptd.Estimateurs.estimateur import Estimateur
+from Estimateurs.estimateur import Estimateur
 
 class Sd(Estimateur):
 #C'est bizarre, pourquoi ici tu prends une variable en entrée et pas le dataframe comme d'habitude pour après selectionner la variable (en fait pour tous les estimateurs)    
@@ -27,7 +27,7 @@ class Sd(Estimateur):
         
 
         sum=0
-        for h in range(0,table.valeurs[indice]):
+        for h in range(0,len(table.valeurs[indice])):
             sum+=(table.valeurs[indice][h]-moyenne)**2
         variance = sum/len(table.valeurs[indice])
         return variance**(0.5)
