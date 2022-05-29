@@ -26,10 +26,11 @@ class Selection(Transformation):
         list
             Les variables demandées.
      ''' 
-        for i in range(len(colonnes)):
-            indice = table.nom_colonnes.index(colonnes[i])
-            selection.append(table.valeurs[indice])
-        return selection
+        for i in range(len(table.nom_colonnes)):
+            if table.nom_colonnes[i] not in colonnes:
+                del table.nom_colonnes[i]
+                del table.valeurs[i]
+        return table
      
 
 if __name__ == '__main__':
