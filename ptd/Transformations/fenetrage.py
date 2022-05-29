@@ -6,7 +6,7 @@ class Fenetrage(Transformation):
     def __init__(self):
         pass
 
-    def execute(self,table1,table2,date1,date2):
+    def execute(table,date1,date2):
         '''Fenêtre la base de données
 
         Returns
@@ -14,6 +14,8 @@ class Fenetrage(Transformation):
         table
             La base de données initiale, mais réduite à la période demandée
         ''' 
-        assert date2>date1:
+        assert date2>date1
         
+
+
 

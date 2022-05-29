@@ -17,9 +17,23 @@ class Table:
         self.nom_colonnes=nom_colonnes
         self.valeurs=valeurs
 
-    def afficher(self):
+    def afficher(self,n):
+        '''
+        Affiche les n premières lignes de la table
+        '''
         print(self.nom_colonnes)
         print(self.valeurs)
+
+    def afficher_n (self,n):
+        '''
+        Affiche les n premières lignes de la table
+        '''
+        print(self.nom_colonnes)
+        valeurs=[]
+        for i in range(len(self.nom_colonnes)):
+            valeurs.append(self.valeurs[i][0:n])
+        print(valeurs)
+
     def resume(self):
         resume=[]
         n=len(self.valeurs)
@@ -63,4 +77,5 @@ if __name__ == '__main__':
     valeurs0=[['mq','mq',1,2,4,5],[3,4,'mq','mq',8,17],['8 ans','12 ans','12 ans','12 ans','12 ans','12 ans'],['du bois','de la rivière','12 ans','12 ans','12 ans','12 ans']]
     alpha0=Table(nom_colonnes0,valeurs0)
     Table.resume(alpha0)
+    Table.afficher_n(alpha0,3)
 
