@@ -42,4 +42,4 @@ if __name__ == '__main__':
     alpha=Importer.lire(beta)
     print(alpha.nom_colonnes)
     gamma=Selection.execute(['date','date_heure'],alpha)
-    Table.afficher(gamma)
+
