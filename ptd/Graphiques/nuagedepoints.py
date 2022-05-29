@@ -1,4 +1,4 @@
-from Graphiques.graphique import Graphique
+from ptd.graphiques.graphique import Graphique
 import matplotlib.pyplot as plt 
 
 class Nuagedepoints(Graphique): 

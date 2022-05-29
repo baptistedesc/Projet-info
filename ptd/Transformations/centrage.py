@@ -1,4 +1,4 @@
-from Transformations.transformation import Transformation
+from transformations.transformation import Transformation
 
 
 class Centrage (Transformation) :

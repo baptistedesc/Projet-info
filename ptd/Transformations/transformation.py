@@ -5,4 +5,3 @@ class Transformation(ABC):
     @abstractmethod
     def execute():
         pass
-
