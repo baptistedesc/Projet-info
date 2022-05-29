@@ -17,7 +17,7 @@ class Table:
         self.nom_colonnes=nom_colonnes
         self.valeurs=valeurs
 
-    def afficher(self,n):
+    def afficher(self):
         '''
         Affiche les n premières lignes de la table
         '''
